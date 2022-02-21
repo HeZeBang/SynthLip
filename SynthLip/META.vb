@@ -1,5 +1,5 @@
-﻿Public Class host
-    Dim Dic As New Dictionary(Of String, Object)
+﻿Public Class META
+    Private ReadOnly Dic As New Dictionary(Of String, Object)
     Public Property PrjName As String
         Set(value As String)
             Dic.Add("PrjName", value)

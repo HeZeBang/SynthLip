@@ -17,3 +17,4 @@ C:\Users\NYTV\source\repos\SynthLip\SynthLip\obj\Debug\net6.0-windows\SynthLip.d
 C:\Users\NYTV\source\repos\SynthLip\SynthLip\obj\Debug\net6.0-windows\ref\SynthLip.dll
 C:\Users\NYTV\source\repos\SynthLip\SynthLip\obj\Debug\net6.0-windows\SynthLip.pdb
 C:\Users\NYTV\source\repos\SynthLip\SynthLip\obj\Debug\net6.0-windows\SynthLip.genruntimeconfig.cache
+C:\Users\NYTV\source\repos\SynthLip\SynthLip\obj\Debug\net6.0-windows\SynthLip.vbproj.AssemblyReference.cache

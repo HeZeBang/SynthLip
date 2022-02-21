@@ -23,49 +23,56 @@ Partial Class ImportFrm
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.ClipImport = New System.Windows.Forms.Button()
-        Me.FileSystemWatcher1 = New System.IO.FileSystemWatcher()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
-        CType(Me.FileSystemWatcher1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.DetailLabel = New System.Windows.Forms.Label()
+        Me.CheckedListBox1 = New System.Windows.Forms.CheckedListBox()
         Me.SuspendLayout()
         '
         'ClipImport
         '
-        Me.ClipImport.Location = New System.Drawing.Point(181, 12)
+        Me.ClipImport.Location = New System.Drawing.Point(12, 12)
         Me.ClipImport.Name = "ClipImport"
         Me.ClipImport.Size = New System.Drawing.Size(75, 23)
         Me.ClipImport.TabIndex = 0
         Me.ClipImport.Text = "Import"
         Me.ClipImport.UseVisualStyleBackColor = True
         '
-        'FileSystemWatcher1
+        'DetailLabel
         '
-        Me.FileSystemWatcher1.EnableRaisingEvents = True
-        Me.FileSystemWatcher1.SynchronizingObject = Me
+        Me.DetailLabel.AutoSize = True
+        Me.DetailLabel.Location = New System.Drawing.Point(12, 38)
+        Me.DetailLabel.Name = "DetailLabel"
+        Me.DetailLabel.Size = New System.Drawing.Size(97, 136)
+        Me.DetailLabel.TabIndex = 2
+        Me.DetailLabel.Text = "Details----------" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Path:" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "EditTime:" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "NoteCount:" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "ScriptVersion:" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "ProjectName:" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Tr" &
+    "ack:" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "TrackName:"
         '
-        'TextBox1
+        'CheckedListBox1
         '
-        Me.TextBox1.Location = New System.Drawing.Point(12, 12)
-        Me.TextBox1.Multiline = True
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(163, 263)
-        Me.TextBox1.TabIndex = 1
+        Me.CheckedListBox1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.CheckedListBox1.FormattingEnabled = True
+        Me.CheckedListBox1.Location = New System.Drawing.Point(12, 177)
+        Me.CheckedListBox1.Name = "CheckedListBox1"
+        Me.CheckedListBox1.Size = New System.Drawing.Size(394, 256)
+        Me.CheckedListBox1.TabIndex = 3
         '
         'ImportFrm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 17.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(800, 450)
-        Me.Controls.Add(Me.TextBox1)
+        Me.ClientSize = New System.Drawing.Size(418, 450)
+        Me.Controls.Add(Me.CheckedListBox1)
+        Me.Controls.Add(Me.DetailLabel)
         Me.Controls.Add(Me.ClipImport)
         Me.Name = "ImportFrm"
         Me.Text = "ImportFrm"
-        CType(Me.FileSystemWatcher1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
 
     Friend WithEvents ClipImport As Button
-    Friend WithEvents FileSystemWatcher1 As IO.FileSystemWatcher
-    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents DetailLabel As Label
+    Friend WithEvents CheckedListBox1 As CheckedListBox
 End Class

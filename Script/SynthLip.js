@@ -82,7 +82,7 @@ function output(cnt, trkidx)
 {
     var name = SV.getProject().getFileName().substr(SV.getProject().getFileName().lastIndexOf('\\') + 1, SV.getProject().getFileName().length - 3);
     var content = "[#SYNTHLIP INFO]\nPrjPath:{0}\nEditTime:{1}\nNoteCount:{2}\nScriptVersion:{3} - {4}\nPrjName:{5}\nTrack:{6}\nTrackName:{7}\n".format(SV.getProject().getFileName(), timecnt, cnt, version, version2, name, trkidx, SV.getProject().getTrack(trkidx).getName());
-    for (i = 0, content += "[NOTE{0}]\n".format(i); i < cnt; i ++, content += "[#{0}]\n".format(i))
+    for (i = 0, content += "[NOTE{0}]\n".format(i); i < cnt; i ++, content += "[NOTE{0}]\n".format(i))
         //for (j = 0; j < notedat[i].num; j ++)
             for (k in notedat[i])
                 content += "{0}:{1}\n".format(k,notedat[i][k]);
