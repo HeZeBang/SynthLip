@@ -7,14 +7,14 @@
         Return ""
     End Function
 
-    Public Function Decode(clip As String) As Object()
-        Dim retval As Object()
-        clip.Replace("[#SYNTHLIP INFO]" & Chr(10), "")
+    Public Function DecodeHost(clip As String) As host
         Dim hostinfo As New host
-        For i As Integer = 0 To 4
-
-        Next
-        Return Nothing
+        clip.Replace("[#SYNTHLIP INFO]" & Chr(10), "")
+        Do
+            Dim s As String = LineInput(clip)
+            hostinfo.SetVal(s.Split(":")(0), s.Split(":")(1))
+        Loop While clip.Contains("[#") = 0
+        Return hostinfo
     End Function
 
 End Module

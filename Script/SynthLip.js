@@ -4,7 +4,7 @@
 // Github repo: https://github.com/HeZeBang/SynthLip
 
 const DbgMode = false;
-const version = 0x000206;
+const version = 0x000207;
 const version2 = "alpha";
 var logs = "";
 
@@ -78,11 +78,11 @@ function init()
     return SV.showCustomDialog(mainfrm);
 }
 
-function output(cnt)
+function output(cnt, trkidx)
 {
     var name = SV.getProject().getFileName().substr(SV.getProject().getFileName().lastIndexOf('\\') + 1, SV.getProject().getFileName().length - 3);
-    var content = "[#SYNTHLIP INFO]\npath:{0}\ntime:{1}\nindex:{2}\nSLver:{3} - {4}\nname:{5}\n".format(SV.getProject().getFileName(), timecnt, cnt, version, version2, name);
-    for (i = 0, content += "[NOTE{0}]\n".format(i); i < cnt; i ++, content += "[NOTE{0}]\n".format(i))
+    var content = "[#SYNTHLIP INFO]\npath:{0}\ntime:{1}\nindex:{2}\nSLver:{3} - {4}\nname:{5}\ntrack:{6}\ntrackname:{7}\n".format(SV.getProject().getFileName(), timecnt, cnt, version, version2, name, trkidx, SV.getProject().getTrack(trkidx).getName());
+    for (i = 0, content += "[NOTE{0}]\n".format(i); i < cnt; i ++, content += "[#{0}]\n".format(i))
         //for (j = 0; j < notedat[i].num; j ++)
             for (k in notedat[i])
                 content += "{0}:{1}\n".format(k,notedat[i][k]);
@@ -170,7 +170,7 @@ function main()
    
     logshow("Log at Current:" + SV.getMainEditor().getCurrentTrack().getName() + " #" + i);
 
-    output(idxnote);
+    output(idxnote, res.answers.cbtrack);
 
     SV.finish();
     return 0;
