@@ -1,5 +1,5 @@
 ﻿Public Class ImportFrm
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles ClipImport.Click
         Dim clip As String = GetClipboard()
         If clip = "" Then
             Exit Sub
