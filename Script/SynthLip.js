@@ -80,20 +80,27 @@ function init()
 
 function output(cnt)
 {
-    var content = "[#SYNTHLIP INFO]\npath:{0}\ntime:{1}\nindex:{2}\nSLver:{3}{4}\n".format(SV.getProject().getFileName(), timecnt, cnt, version, version2);
-    for (i = 0; i < cnt; i ++, content += "\n")
+    var name = SV.getProject().getFileName().substr(SV.getProject().getFileName().lastIndexOf('\\') + 1, SV.getProject().getFileName().length - 3);
+    var content = "[#SYNTHLIP INFO]\npath:{0}\ntime:{1}\nindex:{2}\nSLver:{3} - {4}\nname:{5}\n".format(SV.getProject().getFileName(), timecnt, cnt, version, version2, name);
+    for (i = 0, content += "[NOTE{0}]\n".format(i); i < cnt; i ++, content += "[NOTE{0}]\n".format(i))
         //for (j = 0; j < notedat[i].num; j ++)
             for (k in notedat[i])
                 content += "{0}:{1}\n".format(k,notedat[i][k]);
 
+    // var path = SV.getProject().getFileName().substr(0,SV.getProject().getFileName().length - 3);
+    // var fso = new ActiveXObject("Scripting.FileSystemObject"); 
+    // SV.showMessageBox(path, "{0}txt".format(path));
+    // var file = fso.CreateTextFile("{0}txt".format(path), true);
+    // file.WriteLine(content);
+                
     SV.setHostClipboard(content);
     SV.showMessageBox("完成! 耗时 {0}ms".format(Date.now() - timecnt), (DbgMode)? content:"信息已复制到系统剪贴板! \n请转到SynthLip主程序编辑~\n——ZAMBAR");
 }
 
 function main()
 {
-    timecnt = Date.now();
     var res = init();
+    timecnt = Date.now();
     //logshow();
 
     //fetch data
@@ -126,7 +133,7 @@ function main()
             //get phns
             for (tmp = phogr[i].indexOf(' '); tmp !== -1; tmp = phogr[i].indexOf(' ', tmp + 1))
                 idx ++;
-                notetmpdata.phn = (phogr[i] == "")?    "-":phogr[i].split(' ');
+                notetmpdata.phn = (phogr[i] == "")?    "-":(grp.getNote(i).getPhonemes() == "")?   phogr[i].split(' '):grp.getNote(i).getPhonemes().split(' ');
            
             idx ++;
             dat[idxnote] = new Array();
