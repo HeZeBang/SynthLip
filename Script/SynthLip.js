@@ -4,7 +4,7 @@
 // Github repo: https://github.com/HeZeBang/SynthLip
 
 const DbgMode = false;
-const version = 0x000205;
+const version = 0x000206;
 const version2 = "alpha";
 var logs = "";
 
