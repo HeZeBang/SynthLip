@@ -4,7 +4,6 @@ C:\Users\NYTV\source\repos\SynthLip\SynthLip\bin\Debug\net6.0-windows\SynthLip.r
 C:\Users\NYTV\source\repos\SynthLip\SynthLip\bin\Debug\net6.0-windows\SynthLip.dll
 C:\Users\NYTV\source\repos\SynthLip\SynthLip\bin\Debug\net6.0-windows\ref\SynthLip.dll
 C:\Users\NYTV\source\repos\SynthLip\SynthLip\bin\Debug\net6.0-windows\SynthLip.pdb
-C:\Users\NYTV\source\repos\SynthLip\SynthLip\obj\Debug\net6.0-windows\SynthLip.vbproj.AssemblyReference.cache
 C:\Users\NYTV\source\repos\SynthLip\SynthLip\obj\Debug\net6.0-windows\SynthLip.DbgFrm.resources
 C:\Users\NYTV\source\repos\SynthLip\SynthLip\obj\Debug\net6.0-windows\SynthLip.Form1.resources
 C:\Users\NYTV\source\repos\SynthLip\SynthLip\obj\Debug\net6.0-windows\SynthLip.ImportFrm.resources

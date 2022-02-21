@@ -1,14 +1,11 @@
 ﻿Public Class host
-    Dim name, path, ver As String
-    Dim time As Long
-    Dim index As Integer
     Dim Dic As New Dictionary(Of String, Object)
     Public Property PrjName As String
         Set(value As String)
             Dic.Add("PrjName", value)
         End Set
         Get
-            Return name
+            Return Dic.Item("PrjName")
         End Get
     End Property
     Public Property PrjPath As String
@@ -16,7 +13,7 @@
             Dic.Add("PrjPath", value)
         End Set
         Get
-            Return path
+            Return Dic.Item("PrjPath")
         End Get
     End Property
     Public Property EditTime As Long
@@ -24,7 +21,7 @@
             Dic.Add("EditTime", value)
         End Set
         Get
-            Return time
+            Return Dic.Item("EditTime")
         End Get
     End Property
     Public Property ScriptVersion As String
@@ -32,7 +29,7 @@
             Dic.Add("ScriptVersion", value)
         End Set
         Get
-            Return ver
+            Return Dic.Item("ScriptVersion")
         End Get
     End Property
     Public Property NoteCount As String
@@ -40,7 +37,23 @@
             Dic.Add("NoteCount", value)
         End Set
         Get
-            Return index
+            Return Dic.Item("NoteCount")
+        End Get
+    End Property
+    Public Property Track As String
+        Set(value As String)
+            Dic.Add("Track", value)
+        End Set
+        Get
+            Return Dic.Item("Track")
+        End Get
+    End Property
+    Public Property TrackName As String
+        Set(value As String)
+            Dic.Add("TrackName", value)
+        End Set
+        Get
+            Return Dic.Item("TrackName")
         End Get
     End Property
     Public Function SetVal(ByVal p As String, ByVal val As Object) As Boolean
