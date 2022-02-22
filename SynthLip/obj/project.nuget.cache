@@ -1,8 +1,28 @@
 {
   "version": 2,
-  "dgSpecHash": "C4RLr1s8p4hhRMx7HxKb/CbvIZo3SBD4aqO6FFp3rDs+fqNFDWcPRXNVlHtnxP5JdrK6XQk/1NXrI9hi/zEmRw==",
-  "success": true,
+  "dgSpecHash": "8EHDBLtqwbkt+H8lPKqMumjASLINOTAlmPpPBSNZzbL1+noeD2xzFqGlHIBVLE3gZrhnVkfBFgPhnHQGjsaO4A==",
+  "success": false,
   "projectFilePath": "C:\\Users\\NYTV\\source\\repos\\SynthLip\\SynthLip\\SynthLip.vbproj",
-  "expectedPackageFiles": [],
-  "logs": []
+  "expectedPackageFiles": [
+    "C:\\Users\\NYTV\\.nuget\\packages\\microsoft.aspnetcore.mvc.newtonsoftjson\\6.0.2\\microsoft.aspnetcore.mvc.newtonsoftjson.6.0.2.nupkg.sha512",
+    "C:\\Users\\NYTV\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
+    "C:\\Users\\NYTV\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",
+    "C:\\Users\\NYTV\\.nuget\\packages\\system.text.encodings.web\\6.0.0\\system.text.encodings.web.6.0.0.nupkg.sha512",
+    "C:\\Users\\NYTV\\.nuget\\packages\\system.text.json\\6.0.2\\system.text.json.6.0.2.nupkg.sha512",
+    "C:\\Users\\NYTV\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\5.0.12\\microsoft.netcore.app.host.win-x64.5.0.12.nupkg.sha512",
+    "C:\\Users\\NYTV\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\5.0.0\\microsoft.aspnetcore.app.ref.5.0.0.nupkg.sha512",
+    "C:\\Users\\NYTV\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\5.0.0\\microsoft.windowsdesktop.app.ref.5.0.0.nupkg.sha512",
+    "C:\\Users\\NYTV\\.nuget\\packages\\microsoft.netcore.app.ref\\5.0.0\\microsoft.netcore.app.ref.5.0.0.nupkg.sha512"
+  ],
+  "logs": [
+    {
+      "code": "NU1202",
+      "level": "Error",
+      "message": "包 Microsoft.AspNetCore.Mvc.NewtonsoftJson 6.0.2 与 net5.0-windows7.0 (.NETCoreApp,Version=v5.0) 不兼容。 包 Microsoft.AspNetCore.Mvc.NewtonsoftJson 6.0.2 支持: net6.0 (.NETCoreApp,Version=v6.0)",
+      "libraryId": "Microsoft.AspNetCore.Mvc.NewtonsoftJson",
+      "targetGraphs": [
+        "net5.0-windows7.0"
+      ]
+    }
+  ]
 }
