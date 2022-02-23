@@ -12,12 +12,12 @@ namespace SynthLipCS
         PrjInfo? info;
         private void button1_Click(object sender, EventArgs e)
         {
-            string clip = Clipboard.GetText(), meta;
+            string clip = Clipboard.GetText();
             if (!clip.Contains("#SYNTHLIP INFO"))
                 return;
             else
                 clip = clip.Substring(clip.IndexOf("{"));
-            /*try*/
+            try
             {
                 info = JsonSerializer.Deserialize<PrjInfo>(clip);
                 if (info != null)
@@ -27,12 +27,20 @@ namespace SynthLipCS
                     clip = clip.Substring(clip.IndexOf("}") + 1);
                 }
             }
-            /*catch (Exception ex)
+            catch (Exception ex)
             {
                 if(ex != null)
                     System.Diagnostics.Debug.WriteLine(ex.Message);
-            }*/
-            
+            }
+            if(info == null)
+                return ;
+
+            this.listView1.Columns.Clear();
+            this.listView1.Columns.Add("Notes", 120, HorizontalAlignment.Left);
+            this.listView1.Columns.Add("Notes", 120, HorizontalAlignment.Left);
+            this.listView1.BeginUpdate();
+
+            this.listView1.EndUpdate();
         }
     }
 }

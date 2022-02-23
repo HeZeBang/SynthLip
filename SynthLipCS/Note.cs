@@ -8,12 +8,12 @@ namespace SynthLipCS
 {
     public class Note
     {
-        public string? lrc { get; set; }
-        public double ons { get; set; }
-        public double dur { get; set; }
-        public int num { get; set; }
-        public string[]? phn { get; set; }
-        public double[]? scl { get; set; }
-        public int pit { get; set; }
+        public string? Lrc { get; set; }
+        public double Ons { get; set; }
+        public double Dur { get; set; }
+        public int Num { get; set; }
+        public string[]? Phn { get; set; }
+        public double[]? Scl { get; set; }
+        public int Pit { get; set; }
     }
 }
