@@ -1,0 +1,17 @@
+C:\Users\NYTV\source\repos\SynthLip\SynthLipCS\bin\Debug\net6.0-windows\SynthLipCS.exe
+C:\Users\NYTV\source\repos\SynthLip\SynthLipCS\bin\Debug\net6.0-windows\SynthLipCS.deps.json
+C:\Users\NYTV\source\repos\SynthLip\SynthLipCS\bin\Debug\net6.0-windows\SynthLipCS.runtimeconfig.json
+C:\Users\NYTV\source\repos\SynthLip\SynthLipCS\bin\Debug\net6.0-windows\SynthLipCS.dll
+C:\Users\NYTV\source\repos\SynthLip\SynthLipCS\bin\Debug\net6.0-windows\ref\SynthLipCS.dll
+C:\Users\NYTV\source\repos\SynthLip\SynthLipCS\bin\Debug\net6.0-windows\SynthLipCS.pdb
+C:\Users\NYTV\source\repos\SynthLip\SynthLipCS\obj\Debug\net6.0-windows\SynthLipCS.csproj.AssemblyReference.cache
+C:\Users\NYTV\source\repos\SynthLip\SynthLipCS\obj\Debug\net6.0-windows\SynthLipCS.Form1.resources
+C:\Users\NYTV\source\repos\SynthLip\SynthLipCS\obj\Debug\net6.0-windows\SynthLipCS.csproj.GenerateResource.cache
+C:\Users\NYTV\source\repos\SynthLip\SynthLipCS\obj\Debug\net6.0-windows\SynthLipCS.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\NYTV\source\repos\SynthLip\SynthLipCS\obj\Debug\net6.0-windows\SynthLipCS.AssemblyInfoInputs.cache
+C:\Users\NYTV\source\repos\SynthLip\SynthLipCS\obj\Debug\net6.0-windows\SynthLipCS.AssemblyInfo.cs
+C:\Users\NYTV\source\repos\SynthLip\SynthLipCS\obj\Debug\net6.0-windows\SynthLipCS.csproj.CoreCompileInputs.cache
+C:\Users\NYTV\source\repos\SynthLip\SynthLipCS\obj\Debug\net6.0-windows\SynthLipCS.dll
+C:\Users\NYTV\source\repos\SynthLip\SynthLipCS\obj\Debug\net6.0-windows\ref\SynthLipCS.dll
+C:\Users\NYTV\source\repos\SynthLip\SynthLipCS\obj\Debug\net6.0-windows\SynthLipCS.pdb
+C:\Users\NYTV\source\repos\SynthLip\SynthLipCS\obj\Debug\net6.0-windows\SynthLipCS.genruntimeconfig.cache
