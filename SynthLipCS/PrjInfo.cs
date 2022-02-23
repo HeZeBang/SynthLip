@@ -16,6 +16,7 @@ namespace SynthLipCS
         public int Track { get; set; }
         public string? TrackName { get; set; }
 
+        public Note[]? Notes { get; set; }
 
     }
 }

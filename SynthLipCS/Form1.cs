@@ -9,27 +9,30 @@ namespace SynthLipCS
             InitializeComponent();
         }
 
+        PrjInfo? info;
         private void button1_Click(object sender, EventArgs e)
         {
-            string clip = Clipboard.GetText();
+            string clip = Clipboard.GetText(), meta;
             if (!clip.Contains("#SYNTHLIP INFO"))
                 return;
             else
-                clip = clip.Substring(clip.IndexOf("{"), clip.IndexOf("}") - clip.IndexOf("{") + 1);
-
-            try
+                clip = clip.Substring(clip.IndexOf("{"));
+            /*try*/
             {
-                PrjInfo? info = JsonSerializer.Deserialize<PrjInfo>(clip);
-
+                info = JsonSerializer.Deserialize<PrjInfo>(clip);
                 if (info != null)
-                    System.Diagnostics.Debug.Print(info.PrjName);
+                {
+                    System.Diagnostics.Debug.Print(string.Format("{0}",info.NoteCount));
+                    this.Text = string.Format("Loaded Project: {0}", info.PrjName);
+                    clip = clip.Substring(clip.IndexOf("}") + 1);
+                }
             }
-            catch (Exception ex)
+            /*catch (Exception ex)
             {
                 if(ex != null)
                     System.Diagnostics.Debug.WriteLine(ex.Message);
-                throw;
-            }
+            }*/
+            
         }
     }
 }
