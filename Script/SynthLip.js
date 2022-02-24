@@ -3,9 +3,9 @@
 // Author: ZAMBAR
 // Github repo: https://github.com/HeZeBang/SynthLip
 
-const DbgMode = false;
-const version = 0x000207;
-const version2 = "alpha";
+const DbgMode = true;
+const version = 0x000300;
+const version2 = "snapshot";
 var logs = "";
 
 function getClientInfo()
@@ -81,18 +81,19 @@ function init()
 function output(cnt, trkidx)
 {
     var name = SV.getProject().getFileName().substr(SV.getProject().getFileName().lastIndexOf('\\') + 1, SV.getProject().getFileName().length - 3);
-    var content = "[#SYNTHLIP INFO]\nPrjPath:{0}\nEditTime:{1}\nNoteCount:{2}\nScriptVersion:{3} - {4}\nPrjName:{5}\nTrack:{6}\nTrackName:{7}\n".format(SV.getProject().getFileName(), timecnt, cnt, version, version2, name, trkidx, SV.getProject().getTrack(trkidx).getName());
-    for (i = 0, content += "[NOTE{0}]\n".format(i); i < cnt; i ++, content += "[NOTE{0}]\n".format(i))
-        //for (j = 0; j < notedat[i].num; j ++)
-            for (k in notedat[i])
-                content += "{0}:{1}\n".format(k,notedat[i][k]);
+    var info = {
+        "PrjName": name,
+        "PrjPath": SV.getProject().getFileName(),
+        "EditTime": timecnt,
+        "NoteCount": cnt,
+        "ScriptVersion": version,
+        "Track": trkidx,
+        "TrackName": SV.getProject().getTrack(trkidx).getName(),
+        "Notes": notedat
+    }
 
-    // var path = SV.getProject().getFileName().substr(0,SV.getProject().getFileName().length - 3);
-    // var fso = new ActiveXObject("Scripting.FileSystemObject"); 
-    // SV.showMessageBox(path, "{0}txt".format(path));
-    // var file = fso.CreateTextFile("{0}txt".format(path), true);
-    // file.WriteLine(content);
-                
+    var content = "#SYNTHLIP INFO\n";
+    content += (DbgMode)? JSON.stringify(info, undefined, 4):JSON.stringify(info);
     SV.setHostClipboard(content);
     SV.showMessageBox("完成! 耗时 {0}ms".format(Date.now() - timecnt), (DbgMode)? content:"信息已复制到系统剪贴板! \n请转到SynthLip主程序编辑~\n——ZAMBAR");
 }
@@ -119,13 +120,13 @@ function main()
         {
             //init
             var notetmpdata = {
-                "lrc": "-", //Lyric
-                "ons": 0,   //NoteOnset
-                "dur": 0,   //NoteDuration
-                "num": 0,   //Num of Phonemes
-                "phn": [],  //Phonemes
-                "scl": [],  //Scale of Duration
-                "pit": 60
+                "Lrc": "-", //Lyric
+                "Ons": 0,   //NoteOnset
+                "Dur": 0,   //NoteDuration
+                "Num": 0,   //Num of Phonemes
+                "Phn": [],  //Phonemes
+                "Scl": [],  //Scale of Duration
+                "Pit": 60
             }
             var idx = 0;    //idx index of pho
             var dur = grp.getNote(i).getAttributes().dur;   //dur.length为0时表示未更改而不是单音素 且len只能表示前几个更改 idx才是真正的音素数
@@ -133,27 +134,31 @@ function main()
             //get phns
             for (tmp = phogr[i].indexOf(' '); tmp !== -1; tmp = phogr[i].indexOf(' ', tmp + 1))
                 idx ++;
-                notetmpdata.phn = (phogr[i] == "")?    "-":(grp.getNote(i).getPhonemes() == "")?   phogr[i].split(' '):grp.getNote(i).getPhonemes().split(' ');
+                notetmpdata.phn = (phogr[i] == "")?    ["-"]:(grp.getNote(i).getPhonemes() == "")?   phogr[i].split(' '):grp.getNote(i).getPhonemes().split(' ');
            
             idx ++;
             dat[idxnote] = new Array();
-            notetmpdata.ons = SV.getProject().getTimeAxis().getSecondsFromBlick(grp.getNote(i).getOnset());
-            notetmpdata.dur = SV.getProject().getTimeAxis().getSecondsFromBlick(grp.getNote(i).getEnd()) - SV.getProject().getTimeAxis().getSecondsFromBlick(grp.getNote(i).getOnset());
-            notetmpdata.num = idx;
-            notetmpdata.lrc = grp.getNote(i).getLyrics();
-            notetmpdata.pit = grp.getNote(i).getPitch();
+            notetmpdata.Ons = SV.getProject().getTimeAxis().getSecondsFromBlick(grp.getNote(i).getOnset());
+            notetmpdata.Dur = SV.getProject().getTimeAxis().getSecondsFromBlick(grp.getNote(i).getEnd()) - SV.getProject().getTimeAxis().getSecondsFromBlick(grp.getNote(i).getOnset());
+            notetmpdata.Num = idx;
+            notetmpdata.Lrc = grp.getNote(i).getLyrics();
+            notetmpdata.Pit = grp.getNote(i).getPitch();
             adlg("No." + idxnote + "->   " + notetmpdata.lrc);
+            //logshow();
 
             for (j = 0; j < idx; j ++)
             {
-                var bpm = SV.getProject().getTimeAxis().getTempoMarkAt(grp.getNote(i).getOnset()).bpm;
+                //var bpm = SV.getProject().getTimeAxis().getTempoMarkAt(grp.getNote(i).getOnset()).bpm;
                 //logs+="dur:" + notedat[idxnote].dur + ";";
-                notetmpdata.scl[j] = (dur[j] == undefined)? 1:dur[j];
+                notetmpdata.Scl[j] = (dur[j] == undefined)? 1:dur[j];
                 //SV.showMessageBox(notedat[idxnote].num + idx , notedat[idxnote].scl[j]);
                 //dat[idxnote][j]=((dur[j] == undefined)? 1:dur[j]) * SV.blick2Seconds(grp.getNote(i).getDuration(), SV.getProject().getTimeAxis().getTempoMarkAt(grp.getNote(i).getEnd() - grp.getNote(i).getDuration()).bpm)/idx;    //origin array
                 //logs += dat[idxnote][j];
                 //logs += (dur[j] || 1) * SV.blick2Seconds(grp.getNote(i).getDuration(), SV.getProject().getTimeAxis().getTempoMarkAt(grp.getNote(i).getEnd() - grp.getNote(i).getDuration()).bpm)/idx + ", ";
+                // logshow();
             }
+
+            // logshow();
         }
     }
 

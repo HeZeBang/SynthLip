@@ -16,7 +16,7 @@ namespace SynthLipCS
             if (!clip.Contains("#SYNTHLIP INFO"))
                 return;
             else
-                clip = clip.Substring(clip.IndexOf("{"));
+                clip = clip[clip.IndexOf("{")..];
             try
             {
                 info = JsonSerializer.Deserialize<PrjInfo>(clip);
@@ -24,7 +24,7 @@ namespace SynthLipCS
                 {
                     System.Diagnostics.Debug.Print(string.Format("{0}",info.NoteCount));
                     this.Text = string.Format("Loaded Project: {0}", info.PrjName);
-                    clip = clip.Substring(clip.IndexOf("}") + 1);
+                    clip = clip[(clip.IndexOf("}") + 1)..];
                 }
             }
             catch (Exception ex)
@@ -37,9 +37,14 @@ namespace SynthLipCS
 
             this.listView1.Columns.Clear();
             this.listView1.Columns.Add("Notes", 120, HorizontalAlignment.Left);
-            this.listView1.Columns.Add("Notes", 120, HorizontalAlignment.Left);
+            this.listView1.Columns.Add("Phoneme", 120, HorizontalAlignment.Left);
             this.listView1.BeginUpdate();
-
+            foreach (var item in info.Notes)
+            {
+                ListViewItem i = new();
+                i.Text = item.Lrc;
+                i.SubItems.Add(String.Format("{0}",item.Phn));
+            }
             this.listView1.EndUpdate();
         }
     }
