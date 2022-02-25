@@ -134,7 +134,7 @@ function main()
             //get phns
             for (tmp = phogr[i].indexOf(' '); tmp !== -1; tmp = phogr[i].indexOf(' ', tmp + 1))
                 idx ++;
-                notetmpdata.phn = (phogr[i] == "")?    ["-"]:(grp.getNote(i).getPhonemes() == "")?   phogr[i].split(' '):grp.getNote(i).getPhonemes().split(' ');
+                notetmpdata.Phn = (phogr[i] == "")?    ["-"]:(grp.getNote(i).getPhonemes() == "")?   phogr[i].split(' '):grp.getNote(i).getPhonemes().split(' ');
            
             idx ++;
             dat[idxnote] = new Array();

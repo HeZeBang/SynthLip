@@ -1,3 +1,5 @@
+using System.Runtime.InteropServices;
+
 namespace SynthLipCS
 {
     internal static class Program
@@ -8,8 +10,16 @@ namespace SynthLipCS
         [STAThread]
         static void Main()
         {
+
             ApplicationConfiguration.Initialize();
             Application.Run(new Form1());
         }
+
+        [DllImport("kernel32.dll", EntryPoint = "Beep")]
+        public static extern int Beep(
+            int dwFreq,
+            int dwDuration
+            );
+
     }
 }
