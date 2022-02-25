@@ -22,7 +22,7 @@ namespace SynthLipCS
                 info = JsonSerializer.Deserialize<PrjInfo>(clip);
                 if (info != null)
                 {
-                    System.Diagnostics.Debug.Print(string.Format("{0}",info.NoteCount));
+                    System.Diagnostics.Debug.Print(string.Format("{0}", info.NoteCount));
                     this.Text = string.Format("Loaded Project: {0}", info.PrjName);
                     clip = clip[(clip.IndexOf("}") + 1)..];
                 }
@@ -43,7 +43,8 @@ namespace SynthLipCS
             {
                 ListViewItem i = new();
                 i.Text = item.Lrc;
-                i.SubItems.Add(String.Format("{0}",item.Phn));
+                i.SubItems.Add(String.Format("{0}", item.Phn.ToString));
+                this.listView1.Items.Add(i);
             }
             this.listView1.EndUpdate();
         }
