@@ -5,7 +5,7 @@
 
 const DbgMode = false;
 const version = 0x000301;
-const version2 = "snapshot";
+const version2 = "Alpha";
 var logs = "";
 
 function getClientInfo()
