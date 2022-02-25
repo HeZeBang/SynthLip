@@ -3,8 +3,8 @@
 // Author: ZAMBAR
 // Github repo: https://github.com/HeZeBang/SynthLip
 
-const DbgMode = true;
-const version = 0x000300;
+const DbgMode = false;
+const version = 0x000301;
 const version2 = "snapshot";
 var logs = "";
 
@@ -143,22 +143,10 @@ function main()
             notetmpdata.Num = idx;
             notetmpdata.Lrc = grp.getNote(i).getLyrics();
             notetmpdata.Pit = grp.getNote(i).getPitch();
-            adlg("No." + idxnote + "->   " + notetmpdata.lrc);
-            //logshow();
+            adlg("No." + idxnote + "->   " + notetmpdata.Lrc);
 
             for (j = 0; j < idx; j ++)
-            {
-                //var bpm = SV.getProject().getTimeAxis().getTempoMarkAt(grp.getNote(i).getOnset()).bpm;
-                //logs+="dur:" + notedat[idxnote].dur + ";";
                 notetmpdata.Scl[j] = (dur[j] == undefined)? 1:dur[j];
-                //SV.showMessageBox(notedat[idxnote].num + idx , notedat[idxnote].scl[j]);
-                //dat[idxnote][j]=((dur[j] == undefined)? 1:dur[j]) * SV.blick2Seconds(grp.getNote(i).getDuration(), SV.getProject().getTimeAxis().getTempoMarkAt(grp.getNote(i).getEnd() - grp.getNote(i).getDuration()).bpm)/idx;    //origin array
-                //logs += dat[idxnote][j];
-                //logs += (dur[j] || 1) * SV.blick2Seconds(grp.getNote(i).getDuration(), SV.getProject().getTimeAxis().getTempoMarkAt(grp.getNote(i).getEnd() - grp.getNote(i).getDuration()).bpm)/idx + ", ";
-                // logshow();
-            }
-
-            // logshow();
         }
     }
 
@@ -171,7 +159,6 @@ function main()
             for (k in notedat[i])
             logs += /*"[" + i + "," + j + "] "*/k + "=" + notedat[i][k] + "\n";
     }
-    //SV.showMessageBox("Log at Current:" + SV.getMainEditor().getCurrentTrack().getName() + " #" + i, logs);
    
     logshow("Log at Current:" + SV.getMainEditor().getCurrentTrack().getName() + " #" + i);
 
