@@ -10,6 +10,7 @@ namespace SynthLipCS
         }
 
         PrjInfo? info;
+        Skins? Sks;
         private void button1_Click(object sender, EventArgs e)
         {
             string clip = Clipboard.GetText();
@@ -55,11 +56,47 @@ namespace SynthLipCS
             }
             this.listView1.EndUpdate();
         }
-        private int timeaxis = 0, head = 0;
+        
         private void button2_Click(object sender, EventArgs e)
         {
-            timeaxis = 0;
-            _ = Program.Beep(Convert.ToInt32(440 * Math.Pow(2, (info.Notes[head].Pit - 69) / 2)), Convert.ToInt32(Math.Floor(info.Notes[head].Dur)));
+            string clip = Clipboard.GetText();
+            System.Diagnostics.Debug.WriteLine(clip);
+            DicPhone dictmp = new();
+            string nclip = "[";
+            for (int i = 0; ; i ++, nclip += ",\n")
+            {
+                if (clip.Contains(','))
+                {
+                    string[] str = clip.Split(',');
+                    str[2]=str[2].Substring(0, str[2].IndexOf('\n'));
+                    dictmp.Phn = str[0];
+                    dictmp.Type = str[1];
+                    dictmp.Src = str[2] + ".jpg";
+                    nclip += JsonSerializer.Serialize<DicPhone>(dictmp);
+                    clip = clip[(clip.IndexOf('\n') + 1)..];
+
+                }
+                else
+                    break;
+            }
+
+            nclip = nclip.Substring(0, nclip.LastIndexOf(','));
+            nclip += "]";
+            Clipboard.SetText(nclip);
+
+            string test = string.Format("\"SkinName\":\"template\",\n\"Dics\":{0}",nclip);
+            test = "{" + test + "}";
+            System.Diagnostics.Debug.WriteLine(test);
+
+            try
+            {
+                Sks = JsonSerializer.Deserialize<Skins>(test);
+                this.Text = Sks.Dics[0].Phn;
+            }
+            catch (Exception ex)
+            {
+                this.Text = ex.Message;
+            }
         }
 
     }
