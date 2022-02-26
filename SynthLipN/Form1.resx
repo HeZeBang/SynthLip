@@ -1,0 +1,110 @@
+﻿<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="textBox1.Text" xml:space="preserve">
+    <value>{"SkinName":"template",
+"Dics":[{"Phn":"aa","Type":"vowel","Src":"C"},
+{"Phn":"ae","Type":"vowel","Src":"D"},
+{"Phn":"ah","Type":"vowel","Src":"D"},
+{"Phn":"ao","Type":"vowel","Src":"F"},
+{"Phn":"aw","Type":"diphthong","Src":"EE"},
+{"Phn":"ax","Type":"vowel","Src":"C"},
+{"Phn":"ay","Type":"diphthong","Src":"DC"},
+{"Phn":"b","Type":"stop","Src":"A"},
+{"Phn":"ch","Type":"affricate","Src":"B"},
+{"Phn":"d","Type":"stop","Src":"B"},
+{"Phn":"dx","Type":"stop","Src":"B"},
+{"Phn":"dr","Type":"affricate","Src":"B"},
+{"Phn":"dh","Type":"fricative","Src":"B"},
+{"Phn":"eh","Type":"vowel","Src":"C"},
+{"Phn":"er","Type":"vowel","Src":"C"},
+{"Phn":"ey","Type":"diphthong","Src":"CC"},
+{"Phn":"f","Type":"fricative","Src":"G"},
+{"Phn":"g","Type":"stop","Src":"B"},
+{"Phn":"hh","Type":"aspirate","Src":"C"},
+{"Phn":"ih","Type":"vowel","Src":"C"},
+{"Phn":"iy","Type":"vowel","Src":"C"},
+{"Phn":"jh","Type":"affricate","Src":"B"},
+{"Phn":"k","Type":"stop","Src":"B"},
+{"Phn":"l","Type":"liquid","Src":"H"},
+{"Phn":"m","Type":"nasal","Src":"A"},
+{"Phn":"n","Type":"nasal","Src":"B"},
+{"Phn":"ng","Type":"nasal","Src":"B"},
+{"Phn":"ow","Type":"diphthong","Src":"FF"},
+{"Phn":"oy","Type":"diphthong","Src":"FC"},
+{"Phn":"p","Type":"stop","Src":"A"},
+{"Phn":"q","Type":"stop","Src":"-"},
+{"Phn":"r","Type":"semivowel","Src":"-"},
+{"Phn":"s","Type":"fricative","Src":"B"},
+{"Phn":"sh","Type":"fricative","Src":"B"},
+{"Phn":"t","Type":"stop","Src":"-"},
+{"Phn":"tr","Type":"affricate","Src":"B"},
+{"Phn":"th","Type":"fricative","Src":"G"},
+{"Phn":"uh","Type":"vowel","Src":"F"},
+{"Phn":"uw","Type":"vowel","Src":"F"},
+{"Phn":"v","Type":"fricative","Src":"G"},
+{"Phn":"w","Type":"semivowel","Src":"F"},
+{"Phn":"y","Type":"semivowel","Src":"B"},
+{"Phn":"z","Type":"fricative","Src":"B"},
+{"Phn":"zh","Type":"fricative","Src":"B"},
+{"Phn":"pau","Type":"silence","Src":"A"},
+{"Phn":"sil","Type":"silence","Src":"A"},
+{"Phn":"-","Type":"continue","Src":"A"}]}</value>
+  </data>
+</root>
