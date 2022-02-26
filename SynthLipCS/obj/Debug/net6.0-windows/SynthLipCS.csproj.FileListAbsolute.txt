@@ -4,7 +4,6 @@ C:\Users\NYTV\source\repos\SynthLip\SynthLipCS\bin\Debug\net6.0-windows\SynthLip
 C:\Users\NYTV\source\repos\SynthLip\SynthLipCS\bin\Debug\net6.0-windows\SynthLipCS.dll
 C:\Users\NYTV\source\repos\SynthLip\SynthLipCS\bin\Debug\net6.0-windows\ref\SynthLipCS.dll
 C:\Users\NYTV\source\repos\SynthLip\SynthLipCS\bin\Debug\net6.0-windows\SynthLipCS.pdb
-C:\Users\NYTV\source\repos\SynthLip\SynthLipCS\obj\Debug\net6.0-windows\SynthLipCS.csproj.AssemblyReference.cache
 C:\Users\NYTV\source\repos\SynthLip\SynthLipCS\obj\Debug\net6.0-windows\SynthLipCS.Form1.resources
 C:\Users\NYTV\source\repos\SynthLip\SynthLipCS\obj\Debug\net6.0-windows\SynthLipCS.csproj.GenerateResource.cache
 C:\Users\NYTV\source\repos\SynthLip\SynthLipCS\obj\Debug\net6.0-windows\SynthLipCS.GeneratedMSBuildEditorConfig.editorconfig
