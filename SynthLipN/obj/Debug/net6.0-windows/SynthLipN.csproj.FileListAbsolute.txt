@@ -16,3 +16,11 @@ D:\Codes\SynthLip\SynthLipN\obj\Debug\net6.0-windows\SynthLipN.pdb
 D:\Codes\SynthLip\SynthLipN\obj\Debug\net6.0-windows\SynthLipN.genruntimeconfig.cache
 D:\Codes\SynthLip\SynthLipN\obj\Debug\net6.0-windows\ref\SynthLipN.dll
 D:\Codes\SynthLip\SynthLipN\obj\Debug\net6.0-windows\SynthLipN.Properties.Resources.resources
+D:\Codes\SynthLip\SynthLipN\bin\Debug\net6.0-windows\Skin\template\A.png
+D:\Codes\SynthLip\SynthLipN\bin\Debug\net6.0-windows\Skin\template\B.png
+D:\Codes\SynthLip\SynthLipN\bin\Debug\net6.0-windows\Skin\template\C.png
+D:\Codes\SynthLip\SynthLipN\bin\Debug\net6.0-windows\Skin\template\D.png
+D:\Codes\SynthLip\SynthLipN\bin\Debug\net6.0-windows\Skin\template\E.png
+D:\Codes\SynthLip\SynthLipN\bin\Debug\net6.0-windows\Skin\template\F.png
+D:\Codes\SynthLip\SynthLipN\bin\Debug\net6.0-windows\Skin\template\G.png
+D:\Codes\SynthLip\SynthLipN\bin\Debug\net6.0-windows\Skin\template\H.png

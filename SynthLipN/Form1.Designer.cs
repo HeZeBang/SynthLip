@@ -35,6 +35,8 @@
             this.listView1 = new System.Windows.Forms.ListView();
             this.listView2 = new System.Windows.Forms.ListView();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.button4 = new System.Windows.Forms.Button();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.SuspendLayout();
             // 
             // button1
@@ -94,11 +96,22 @@
             this.textBox1.TabIndex = 4;
             this.textBox1.Text = resources.GetString("textBox1.Text");
             // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(312, 12);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(94, 29);
+            this.button4.TabIndex = 5;
+            this.button4.Text = "button4";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.button4);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.listView2);
             this.Controls.Add(this.listView1);
@@ -120,5 +133,7 @@
         private ListView listView1;
         private ListView listView2;
         private TextBox textBox1;
+        private Button button4;
+        private SaveFileDialog saveFileDialog1;
     }
 }

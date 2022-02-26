@@ -90,7 +90,7 @@ namespace SynthLipN
             this.listView2.EndUpdate();
         }
 
-                private void Button2_Click(object sender, EventArgs e)
+        private void Button2_Click(object sender, EventArgs e)
         {
             string clip = Clipboard.GetText();
             System.Diagnostics.Debug.WriteLine(clip);
@@ -135,9 +135,21 @@ namespace SynthLipN
 
         }
 
-        private void Button3_Click_1(object sender, EventArgs e)
+        private void button4_Click(object sender, EventArgs e)
         {
-
+            var ret = this.saveFileDialog1 = new();
+            ret.CheckPathExists = true;
+            ret.Filter = "FCP5 XM (.xml)|.xml";
+            ret.FileName = info.TrackName;
+            ret.Title = "保存时间线/序列";
+            var result = this.saveFileDialog1.ShowDialog();
+            if(result == DialogResult.OK)
+            {
+                var filepath = ret.FileName.ToString();
+                System.IO.FileStream fs = (System.IO.FileStream)ret.OpenFile();
+                //fs.wr;
+                fs.Close();
+            }
         }
     }
 }
