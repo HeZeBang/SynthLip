@@ -2,7 +2,7 @@
 
 A tool for SynthV to generate lip animation./SynthV口型动画生成工具
 
-> ## 由于校园网环境受限，最新迭代将在Gitee仓库进行，Github仓库每周更新一次，敬请谅解
+> ## 由于校园网环境受限，最新迭代将在[SynthLip - Gitee仓库](https://gitee.com/ZAMBAR/SynthLip)进行，Github仓库每周更新一次，敬请谅解
 
 ![Logo](./source/SynthLip4.png)
 
