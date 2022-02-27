@@ -150,6 +150,10 @@ namespace SynthLipN
                 //fs.wr;
                 fs.Close();
             }
+            Output otp = new();
+
+            MessageBox.Show(otp.OutputFile("test",info));
+
         }
     }
 }

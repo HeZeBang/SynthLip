@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SynthLipN
 {
-    internal class xmlformat
+    public class xmlformat
     {
         public class Rate
         {
@@ -97,11 +97,11 @@ namespace SynthLipN
             /// <summary>
             /// 
             /// </summary>
-            public List<FormatItem> format { get; set; }
+            public FormatItem[] format { get; set; }
             /// <summary>
             /// 
             /// </summary>
-            public List<TrackItem> track { get; set; }
+            public TrackItem[] track { get; set; }
         }
 
         public class Sequence
@@ -149,7 +149,7 @@ namespace SynthLipN
             /// <summary>
             /// 
             /// </summary>
-            public List<MediaItem> media { get; set; }
+            public MediaItem[] media { get; set; }
             /// <summary>
             /// 
             /// </summary>
