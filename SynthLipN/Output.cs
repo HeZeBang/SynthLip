@@ -12,12 +12,9 @@ namespace SynthLipN
     {
 public string OutputFile(string Title, PrjInfo info)
         {
-            xmlformat.Root xmlstr = new();
-            List<xmlformat.MediaItem> mdit = new();
+            xmlformat.Fcpxml xmlstr = new();
             string templatestring = "{\"@version\":\"5\",\"sequence\":{\"@id\":\"序列\",\"updatebehavior\":\"add\",\"name\":\"序列\",\"duration\":\"250\",\"rate\":{\"ntsc\":\"FALSE\",\"timebase\":\"25\"},\"timecode\":{\"rate\":{\"ntsc\":\"FALSE\",\"timebase\":\"25\"},\"string_\":\"01:00:00:00\",\"frame\":\"90000\",\"source\":\"source\",\"displayformat\":\"NDF\"},\"in_\":\"0\",\"out_\":\"250\",\"width\":\"1920\",\"height\":\"1080\",\"media\":[{\"format\":[{\"rate\":{\"ntsc\":\"FALSE\",\"timebase\":\"25\"},\"width\":\"1920\",\"height\":\"1080\",\"pixelaspectratio\":\"Square\",\"anamorphic\":\"FALSE\"}],\"track\":[{\"enabled\":\"TRUE\",\"locked\":\"FALSE\"},{\"clipitem\":[{\"@id\":\"Subtitle_IMG_0000.png\",\"name\":\"Subtitle_IMG_0000.png\",\"duration\":\"3251\",\"rate\":{\"ntsc\":\"FALSE\",\"timebase\":\"25\"},\"in_\":\"1500\",\"out_\":\"1500\",\"start\":\"0\",\"end\":\"0\",\"pixelaspectratio\":\"Square\",\"stillframe\":\"TRUE\",\"anamorphic\":\"FALSE\",\"alphatype\":\"straight\",\"masterclipid\":\"Subtitle_IMG_0000.png1\",\"file\":{\"@id\":\"Subtitle_IMG_0000\",\"name\":\"Subtitle_IMG_0000.png\",\"pathurl\":\"D:/Users/ZAMBAR/Desktop/subtitle/Subtitle_IMG_0000.png\",\"rate\":{\"ntsc\":\"FALSE\",\"timebase\":\"25\"},\"duration\":\"2\",\"width\":\"1920\",\"height\":\"1080\",\"media\":[{\"duration\":\"2\",\"stillframe\":\"TRUE\",\"samplecharacteristics\":{\"rate\":{\"ntsc\":\"FALSE\",\"timebase\":\"25\"},\"width\":\"1920\",\"height\":\"1080\",\"pixelaspectratio\":\"Square\",\"anamorphic\":\"FALSE\"}}]},\"sourcetrack\":[\"video\"],\"fielddominance\":\"none\"}],\"enabled\":\"TRUE\",\"locked\":\"FALSE\"}]}],\"ismasterclip\":\"FALSE\"}}";
             xmlstr = JsonSerializer.Deserialize<xmlformat.Root>(templatestring);
-            templatestring = "[{\"format\":[{\"rate\":{\"ntsc\":\"FALSE\",\"timebase\":\"25\"},\"width\":\"1920\",\"height\":\"1080\",\"pixelaspectratio\":\"Square\",\"anamorphic\":\"FALSE\"}],\"track\":[{\"enabled\":\"TRUE\",\"locked\":\"FALSE\"},{\"clipitem\":[{\"@id\":\"Subtitle_IMG_0000.png\",\"name\":\"Subtitle_IMG_0000.png\",\"duration\":\"3251\",\"rate\":{\"ntsc\":\"FALSE\",\"timebase\":\"25\"},\"in_\":\"1500\",\"out_\":\"1500\",\"start\":\"0\",\"end\":\"0\",\"pixelaspectratio\":\"Square\",\"stillframe\":\"TRUE\",\"anamorphic\":\"FALSE\",\"alphatype\":\"straight\",\"masterclipid\":\"Subtitle_IMG_0000.png1\",\"file\":{\"@id\":\"Subtitle_IMG_0000\",\"name\":\"Subtitle_IMG_0000.png\",\"pathurl\":\"D:/Users/ZAMBAR/Desktop/subtitle/Subtitle_IMG_0000.png\",\"rate\":{\"ntsc\":\"FALSE\",\"timebase\":\"25\"},\"duration\":\"2\",\"width\":\"1920\",\"height\":\"1080\",\"media\":[{\"duration\":\"2\",\"stillframe\":\"TRUE\",\"samplecharacteristics\":{\"rate\":{\"ntsc\":\"FALSE\",\"timebase\":\"25\"},\"width\":\"1920\",\"height\":\"1080\",\"pixelaspectratio\":\"Square\",\"anamorphic\":\"FALSE\"}}]},\"sourcetrack\":[\"video\"],\"fielddominance\":\"none\"}]";
-            //mdit = JsonSerializer.Deserialize<List<xmlformat.MediaItem>>(templatestring);
             //xmlstr.sequence.media = mdit;
             /*xmlstr.@version = "5";
             xmlstr.sequence.@id = Title;
@@ -46,6 +43,7 @@ public string OutputFile(string Title, PrjInfo info)
             ns.Add("", "");
             System.Xml.Serialization.XmlSerializer serializer = new System.Xml.Serialization.XmlSerializer(typeof(xmlformat.Root));
             serializer.Serialize(stringWriter, xmlstr, ns);
+            string otpjson = JsonSerializer.Serialize<xmlformat.Root>(xmlstr);
             string otp = Convert.ToString(stringWriter).Replace("_", "");
             return otp;
         }

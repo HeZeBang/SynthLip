@@ -8,152 +8,224 @@ namespace SynthLipN
 {
     public class xmlformat
     {
-        public class Rate
-        {
-            /// <summary>
-            /// 
-            /// </summary>
-            public string ntsc { get; set; }
-            /// <summary>
-            /// 
-            /// </summary>
-            public string timebase { get; set; }
-        }
-
-        public class Timecode
-        {
-            /// <summary>
-            /// 
-            /// </summary>
-            public Rate rate { get; set; }
-            /// <summary>
-            /// 
-            /// </summary>
-            public string string_ { get; set; }
-            /// <summary>
-            /// 
-            /// </summary>
-            public string frame { get; set; }
-            /// <summary>
-            /// 
-            /// </summary>
-            public string source { get; set; }
-            /// <summary>
-            /// 
-            /// </summary>
-            public string displayformat { get; set; }
-        }
-
-        public class Rate_
-        {
-            /// <summary>
-            /// 
-            /// </summary>
-            public string ntsc { get; set; }
-            /// <summary>
-            /// 
-            /// </summary>
-            public string timebase { get; set; }
-        }
-
         public class FormatItem
         {
             /// <summary>
             /// 
             /// </summary>
-            public Rate rate { get; set; }
+            public string _id { get; set; }
             /// <summary>
             /// 
             /// </summary>
-            public string width { get; set; }
+            public string _frameDuration { get; set; }
             /// <summary>
             /// 
             /// </summary>
-            public string height { get; set; }
+            public string _width { get; set; }
             /// <summary>
             /// 
             /// </summary>
-            public string pixelaspectratio { get; set; }
-            /// <summary>
-            /// 
-            /// </summary>
-            public string anamorphic { get; set; }
+            public string _height { get; set; }
         }
 
-        public class TrackItem
+        public class AssetItem
         {
             /// <summary>
             /// 
             /// </summary>
-            public string enabled { get; set; }
+            public string _id { get; set; }
             /// <summary>
             /// 
             /// </summary>
-            public string locked { get; set; }
+            public string _name { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string _uid { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string _src { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string _start { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string _duration { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string _hasVideo { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string _format { get; set; }
         }
 
-        public class MediaItem
+        public class Resources
         {
             /// <summary>
             /// 
             /// </summary>
-            public FormatItem[] format { get; set; }
+            public List<FormatItem> format { get; set; }
             /// <summary>
             /// 
             /// </summary>
-            public TrackItem[] track { get; set; }
+            public List<AssetItem> asset { get; set; }
+        }
+
+        public class VideoItem
+        {
+            /// <summary>
+            /// 
+            /// </summary>
+            public string _name { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string _lane { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string _offset { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string _ref { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string _duration { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string _start { get; set; }
+        }
+
+        public class Gap
+        {
+            /// <summary>
+            /// 
+            /// </summary>
+            public string _offset { get; set; }
+            /// <summary>
+            /// 空隙
+            /// </summary>
+            public string _name { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string _duration { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string _start { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public List<VideoItem> video { get; set; }
+        }
+
+        public class Spine
+        {
+            /// <summary>
+            /// 
+            /// </summary>
+            public Gap gap { get; set; }
         }
 
         public class Sequence
         {
             /// <summary>
+            /// 
+            /// </summary>
+            public string _duration { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string _format { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string _tcStart { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string _tcFormat { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string _audioLayout { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string _audioRate { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public Spine spine { get; set; }
+        }
+
+        public class Project
+        {
+            /// <summary>
             /// XML字幕序列
             /// </summary>
-            public string @id { get; set; }
+            public string _name { get; set; }
             /// <summary>
             /// 
             /// </summary>
-            public string updatebehavior { get; set; }
-            /// <summary>
-            /// XML字幕序列_25.0p_Subtitle
-            /// </summary>
-            public string name { get; set; }
+            public string _uid { get; set; }
             /// <summary>
             /// 
             /// </summary>
-            public string duration { get; set; }
+            public Sequence sequence { get; set; }
+        }
+
+        public class @event
+        {
             /// <summary>
             /// 
             /// </summary>
-            public Rate rate { get; set; }
+            public string _name { get; set; }
             /// <summary>
             /// 
             /// </summary>
-            public Timecode timecode { get; set; }
+            public string _uid { get; set; }
             /// <summary>
             /// 
             /// </summary>
-            public string in_ { get; set; }
+            public Project project { get; set; }
+        }
+
+        public class Library
+        {
             /// <summary>
             /// 
             /// </summary>
-            public string out_ { get; set; }
+            public string _location { get; set; }
             /// <summary>
             /// 
             /// </summary>
-            public string width { get; set; }
+            public @event @event { get; set; }
+        }
+
+        public class Fcpxml
+        {
             /// <summary>
             /// 
             /// </summary>
-            public string height { get; set; }
+            public string _version { get; set; }
             /// <summary>
             /// 
             /// </summary>
-            public MediaItem[] media { get; set; }
+            public Resources resources { get; set; }
             /// <summary>
             /// 
             /// </summary>
-            public string ismasterclip { get; set; }
+            public Library library { get; set; }
         }
 
         public class Root
@@ -161,11 +233,7 @@ namespace SynthLipN
             /// <summary>
             /// 
             /// </summary>
-            public string @version { get; set; }
-            /// <summary>
-            /// 
-            /// </summary>
-            public Sequence sequence { get; set; }
+            public Fcpxml fcpxml { get; set; }
         }
     }
 }
