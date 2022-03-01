@@ -61,7 +61,7 @@ public string OutputFile(string Title, PrjInfo info)
  + "          <locked>FALSE</locked>\n"
  + "        </track>\n"
  + "        <track>\n"
- + "          <clipitem id=\"Subtitle_IMG_0001.png\">\n"
+ /*+ "          <clipitem id=\"Subtitle_IMG_0001.png\">\n"
  + "            <!--loop-->\n"
  + "            <name>Subtitle_IMG_0001.png</name>\n"
  + "            <duration>3251</duration>\n"
@@ -109,7 +109,7 @@ public string OutputFile(string Title, PrjInfo info)
  + "              <mediatype>video</mediatype>\n"
  + "            </sourcetrack>\n"
  + "            <fielddominance>none</fielddominance>\n"
- + "          </clipitem>\n"
+ + "          </clipitem>\n"*/
  + "          <enabled>TRUE</enabled>\n"
  + "          <locked>FALSE</locked>\n"
  + "        </track>\n"
@@ -122,21 +122,26 @@ public string OutputFile(string Title, PrjInfo info)
             byte[] vs = Encoding.UTF8.GetBytes(templatestring);
             MemoryStream ms = new MemoryStream(vs);
             XElement ele =  XElement.Load(ms);
-            var id = "Subtitle_IMG_0001.png";
+            string id = "Subtitle_IMG_0001.png";
+            int timebase = 25;
             ele.Element("sequence")
                 .Element("media")
                 .Element("video")
                 .Elements("track").ElementAt(1)
-                .AddFirst(new XElement("clipitem", new XAttribute("id", "ID"),
+                .AddFirst(new XElement("clipitem", new XAttribute("id", id),
                     new XElement("name", id),
-                    new XElement("duration", "DUR"),
-                    new XElement("rate",
-                        new XElement("ntsc", "FALSE"),
-                        new XElement("timebase", "TB")),
-                    new XElement("in", 1500),
-                    new XElement("out", 1538),
-                    new XElement("start", 0),
-                    new XElement("end", 46),
+                    new XElement("duration", "DUR"),    //一个整数，以帧数为单位指定持续时间。
+                    new XElement("rate",    //对时间刻度进行编码，以解释剪辑、序列、时间码或其他组件的时间值。
+                        new XElement("ntsc", "FALSE"),  //指定 NTSC 速率降低的布尔值。
+                        new XElement("timebase", timebase)),    //一个整数，指定帧速率的时间基。
+                    new XElement("in", 1500),   //一个整数，指定开始时间。
+                    new XElement("out", 1538),  //指定结束时间的整数。
+                    new XElement("start", 0),   //一个整数，指定轨道中剪辑的相对起点。
+                    new XElement("end", 46),    //一个整数，指定轨道中剪辑的相对终点。
+                    /*
+                     * 注意：在 Final Cut Pro 中，elements的 out 与 end 和 in / start 的计时值的计算方式不同。
+                     * 要计算或解释 start 和 in 的值，Final Cut 会将第一帧编号为帧 0。另一方面，要计算或解释 out 和 end 的值，Final Cut 会将第一帧编号为第 1 帧。换句话说，Final Cut 在计算或解释这些元素的值时使用两种不同的序号编号方案。
+                     */
                     new XElement("pixelaspectratio", "Square"),
                     new XElement("stillframe", "TRUE"),
                     new XElement("anamorphic", "FALSE"),
@@ -147,7 +152,7 @@ public string OutputFile(string Title, PrjInfo info)
                         new XElement("pathurl", "PATH"),
                         new XElement("rate",
                             new XElement("ntsc", "FALSE"),
-                            new XElement("timebase", "TB")
+                            new XElement("timebase", timebase)
                             ),
                         new XElement("duration", 2),
                         new XElement("width", 1920),
@@ -159,7 +164,7 @@ public string OutputFile(string Title, PrjInfo info)
                                 new XElement("samplecharacteristics",
                                     new XElement("rate",
                                         new XElement("ntsc", "FALSE"),
-                                        new XElement("timebase", "TB")),
+                                        new XElement("timebase", timebase)),
                                     new XElement("width", 1920),
                                     new XElement("height", 1080),
                                     new XElement("pixelaspectratio", "Square"),
