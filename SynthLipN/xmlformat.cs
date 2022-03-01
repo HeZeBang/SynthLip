@@ -8,6 +8,7 @@ namespace SynthLipN
 {
     public class xmlformat
     {
+        /* This Class will no longer in support due to its bad behave in xml performing.*/
         public class FormatItem
         {
             /// <summary>

@@ -122,8 +122,58 @@ public string OutputFile(string Title, PrjInfo info)
             byte[] vs = Encoding.UTF8.GetBytes(templatestring);
             MemoryStream ms = new MemoryStream(vs);
             XElement ele =  XElement.Load(ms);
+            var id = "Subtitle_IMG_0001.png";
             ele.Element("sequence")
-                .Add(new XElement("assest", new XAttribute("id", "r7"), new XAttribute("name", "Subtitle")));
+                .Element("media")
+                .Element("video")
+                .Elements("track").ElementAt(1)
+                .AddFirst(new XElement("clipitem", new XAttribute("id", "ID"),
+                    new XElement("name", id),
+                    new XElement("duration", "DUR"),
+                    new XElement("rate",
+                        new XElement("ntsc", "FALSE"),
+                        new XElement("timebase", "TB")),
+                    new XElement("in", 1500),
+                    new XElement("out", 1538),
+                    new XElement("start", 0),
+                    new XElement("end", 46),
+                    new XElement("pixelaspectratio", "Square"),
+                    new XElement("stillframe", "TRUE"),
+                    new XElement("anamorphic", "FALSE"),
+                    new XElement("alphatype", "straight"),
+                    new XElement("masterclipid", id),
+                    new XElement("file", new XAttribute("id", id),
+                        new XElement("name", "ID.png"),
+                        new XElement("pathurl", "PATH"),
+                        new XElement("rate",
+                            new XElement("ntsc", "FALSE"),
+                            new XElement("timebase", "TB")
+                            ),
+                        new XElement("duration", 2),
+                        new XElement("width", 1920),
+                        new XElement("height", 1080),
+                        new XElement("media",
+                            new XElement("video",
+                                new XElement("duration", 2),
+                                new XElement("stillframe", "TRUE"),
+                                new XElement("samplecharacteristics",
+                                    new XElement("rate",
+                                        new XElement("ntsc", "FALSE"),
+                                        new XElement("timebase", "TB")),
+                                    new XElement("width", 1920),
+                                    new XElement("height", 1080),
+                                    new XElement("pixelaspectratio", "Square"),
+                                    new XElement("anamorphic", "FALSE")
+                                    )
+                               )
+                            )
+                        ),
+                    new XElement("sourcetrack",
+                        new XElement("mediatype", "video")
+                        ),
+                    new XElement("fielddominance", "none")
+                    ));
+            
             //xmlstr = 
             //xmlstr = JsonSerializer.Deserialize<xmlformat.Root>(templatestring);
             //xmlstr.sequence.media = mdit;
@@ -159,9 +209,7 @@ public string OutputFile(string Title, PrjInfo info)
             string otp = Convert.ToString(stringWriter).Replace("_", "");*/
 
             //string head = "";
-            var reader = ele.CreateWriter();
-            reader.Close();
-            return reader;
+            return ele.ToString();
         }
     }
 }

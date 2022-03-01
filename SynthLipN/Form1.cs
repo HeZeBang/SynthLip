@@ -137,7 +137,7 @@ namespace SynthLipN
 
         private void button4_Click(object sender, EventArgs e)
         {
-            var ret = this.saveFileDialog1 = new();
+            /*var ret = this.saveFileDialog1 = new();
             ret.CheckPathExists = true;
             ret.Filter = "FCP5 XM (.xml)|.xml";
             ret.FileName = info.TrackName;
@@ -149,10 +149,11 @@ namespace SynthLipN
                 System.IO.FileStream fs = (System.IO.FileStream)ret.OpenFile();
                 //fs.wr;
                 fs.Close();
-            }
+            }*/
             Output otp = new();
 
-            MessageBox.Show(otp.OutputFile("test",info));
+            //MessageBox.Show(otp.OutputFile("test",info));
+            this.textBox2.Text = otp.OutputFile("test", info);
 
         }
     }
