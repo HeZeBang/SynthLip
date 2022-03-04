@@ -58,21 +58,19 @@ namespace SynthLipN
 
 
 
-        Dictionary<string, string> phokey = new();
+
         private void Button3_Click(object sender, EventArgs e)
         {
             Sks = JsonSerializer.Deserialize<Skins>(this.textBox1.Text);
             foreach (var key in Sks.Dics)
             {
-                if (!phokey.ContainsKey(key.Phn))
-                {
-                    phokey.Add(key.Phn, key.Src);
-                }
+                Sks.Additem(key.Phn, key.Type, key.Src);
             }
 
             this.listView2.Columns.Add("Phoneme", 120, HorizontalAlignment.Left);
             this.listView2.Columns.Add("Onset", 120, HorizontalAlignment.Left);
             this.listView2.Columns.Add("Source", 120, HorizontalAlignment.Left);
+            this.listView2.Columns.Add("Type", 120, HorizontalAlignment.Left);
             this.listView2.BeginUpdate();
             foreach (var item in info.Notes)
             {
@@ -83,7 +81,8 @@ namespace SynthLipN
                     ListViewItem i = new();
                     i.Text = phones;
                     i.SubItems.Add(Convert.ToString(item.Ons + idx * item.Dur / item.Num));
-                    i.SubItems.Add(phokey[phones]);
+                    i.SubItems.Add(Sks.GetSrc(phones));
+                    i.SubItems.Add(Sks.GetType(phones));
                     this.listView2.Items.Add(i);
                 }
             }
@@ -107,7 +106,6 @@ namespace SynthLipN
                     dictmp.Src = str[2];
                     nclip += JsonSerializer.Serialize<DicPhone>(dictmp);
                     clip = clip[(clip.IndexOf('\n') + 1)..];
-
                 }
                 else
                     break;
@@ -150,6 +148,12 @@ namespace SynthLipN
                 //fs.wr;
                 fs.Close();
             }*/
+
+            foreach (var item in this.listView2.Items)
+            {
+
+            }    
+
             Output otp = new();
 
             //MessageBox.Show(otp.OutputFile("test",info));
