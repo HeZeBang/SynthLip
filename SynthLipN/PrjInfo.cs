@@ -13,4 +13,15 @@
         public Note[]? Notes { get; set; }
 
     }
+
+    public class MetaPhn
+    {
+        public string? PhnName { get; set; }
+        public string? PhnPath { get; set; }
+        public double PhnOnset { get; set; }
+        public double PhnDuration { get; set; }
+        public string? PhnType { get; set; }
+
+        public string PhnSource { get; set; }
+    }
 }

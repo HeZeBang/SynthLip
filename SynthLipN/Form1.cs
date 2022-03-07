@@ -66,7 +66,7 @@ namespace SynthLipN
             {
                 Sks.Additem(key.Phn, key.Type, key.Src);
             }
-
+            this.listView2.Clear();
             this.listView2.Columns.Add("Phoneme", 120, HorizontalAlignment.Left);
             this.listView2.Columns.Add("Onset", 120, HorizontalAlignment.Left);
             this.listView2.Columns.Add("Source", 120, HorizontalAlignment.Left);
@@ -157,7 +157,7 @@ namespace SynthLipN
             Output otp = new();
 
             //MessageBox.Show(otp.OutputFile("test",info));
-            this.textBox2.Text = otp.OutputFile("test", info);
+            this.textBox2.Text = otp.OutputFile("test", info, Sks);
 
         }
     }

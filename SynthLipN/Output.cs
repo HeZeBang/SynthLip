@@ -10,7 +10,7 @@ namespace SynthLipN
 {
     public class Output
     {
-        public string OutputFile(string Title, PrjInfo info)
+        public string OutputFile(string Title, PrjInfo info, Skins sks)
         {
             /* The classs2xml-output mode have been abandoned */
 
@@ -126,8 +126,7 @@ namespace SynthLipN
             
             
 
-
-            string id = "Subtitle_IMG_0001", ftype = ".png";
+            string id = "Subtitle_IMG_0001", ftype = ".png", path = "C:/Users/NYTV/Documents/";
             int timebase = 25, start = 0, dur = 48;
             #region addelement
             ele.Element("sequence")
@@ -155,7 +154,7 @@ namespace SynthLipN
                     new XElement("masterclipid", id + ".png1"),
                     new XElement("file", new XAttribute("id", id),
                         new XElement("name", id + ftype),
-                        new XElement("pathurl", "C:/Users/NYTV/Documents/" + id + ftype),
+                        new XElement("pathurl", path + id + ftype),
                         new XElement("rate",
                             new XElement("ntsc", "FALSE"),
                             new XElement("timebase", timebase)
