@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\NYTV\\source\\repos\\SynthLip\\SynthLipN\\SynthLipN.csproj": {}
+    "D:\\Codes\\SynthLip\\SynthLipN\\SynthLipN.csproj": {}
   },
   "projects": {
-    "C:\\Users\\NYTV\\source\\repos\\SynthLip\\SynthLipN\\SynthLipN.csproj": {
+    "D:\\Codes\\SynthLip\\SynthLipN\\SynthLipN.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\NYTV\\source\\repos\\SynthLip\\SynthLipN\\SynthLipN.csproj",
+        "projectUniqueName": "D:\\Codes\\SynthLip\\SynthLipN\\SynthLipN.csproj",
         "projectName": "SynthLipN",
-        "projectPath": "C:\\Users\\NYTV\\source\\repos\\SynthLip\\SynthLipN\\SynthLipN.csproj",
-        "packagesPath": "C:\\Users\\NYTV\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\NYTV\\source\\repos\\SynthLip\\SynthLipN\\obj\\",
+        "projectPath": "D:\\Codes\\SynthLip\\SynthLipN\\SynthLipN.csproj",
+        "packagesPath": "C:\\Users\\ZAMBAR\\.nuget\\packages\\",
+        "outputPath": "D:\\Codes\\SynthLip\\SynthLipN\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "D:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\NYTV\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\ZAMBAR\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -61,7 +57,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.200\\RuntimeIdentifierGraph.json"
         }
       }
     }

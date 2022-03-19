@@ -10,7 +10,9 @@
         public int Track { get; set; }
         public string? TrackName { get; set; }
 
-        public Note[]? Notes { get; set; }
+        public List<Note>? Notes { get; set; }
+
+        public List<MetaPhn>? metas { get; set; }
 
     }
 
@@ -18,10 +20,9 @@
     {
         public string? PhnName { get; set; }
         public string? PhnPath { get; set; }
-        public double PhnOnset { get; set; }
-        public double PhnDuration { get; set; }
+        public float PhnOnset { get; set; }
+        public float PhnDuration { get; set; }
         public string? PhnType { get; set; }
-
-        public string PhnSource { get; set; }
+        public string? PhnSource { get; set; }
     }
 }

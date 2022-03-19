@@ -51,3 +51,4 @@ C:\Users\NYTV\source\repos\SynthLip\SynthLipN\obj\Debug\net6.0-windows\SynthLipN
 C:\Users\NYTV\source\repos\SynthLip\SynthLipN\obj\Debug\net6.0-windows\ref\SynthLipN.dll
 C:\Users\NYTV\source\repos\SynthLip\SynthLipN\obj\Debug\net6.0-windows\SynthLipN.pdb
 C:\Users\NYTV\source\repos\SynthLip\SynthLipN\obj\Debug\net6.0-windows\SynthLipN.genruntimeconfig.cache
+D:\Codes\SynthLip\SynthLipN\bin\Debug\net6.0-windows\Skin\template\config.json

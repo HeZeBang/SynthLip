@@ -45,4 +45,4 @@
 {"Phn":"zh","Type":"fricative","Src":"B"},
 {"Phn":"pau","Type":"silence","Src":"A"},
 {"Phn":"sil","Type":"silence","Src":"A"},
-{"Phn":"-","Type":"continue","Src":"A"}]}
+{"Phn":"-","Type":"continue","Src":"-"}]}

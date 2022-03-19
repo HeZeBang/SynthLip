@@ -35,10 +35,43 @@ namespace SynthLipN
             if (info == null)
                 return;
 
+            Note init = new();
+            init.Phn = new List<string>();
+            init.Phn.Add("sil");
+            init.Scl = new List<float>();
+            init.Scl.Add(1);
+            init.Pit = 0;
+            init.Num = 1;
+            init.Lrc = "(init)";
+            init.Dur = info.Notes[0].Ons;
+            init.Ons = 0;
+            info.Notes.Insert(0, init);
+
+            for (int i = 1; i < info.Notes.Count; i++)
+            {
+                if (Math.Abs(info.Notes[i].Ons - info.Notes[i - 1].Ons - info.Notes[i - 1].Dur) > 0.25)
+                {
+                    Note sil = new();
+                    sil.Phn = new List<string>();
+                    sil.Phn.Add("sil");
+                    sil.Scl = new List<float>();
+                    sil.Scl.Add(1);
+                    sil.Pit = 0;
+                    sil.Num = 1;
+                    sil.Lrc = "(sil)";
+                    sil.Dur = (float)Math.Round(info.Notes[i].Ons - info.Notes[i - 1].Ons - info.Notes[i - 1].Dur, 4, MidpointRounding.AwayFromZero);
+                    sil.Ons = info.Notes[i - 1].Ons + info.Notes[i - 1].Dur;
+                    info.Notes.Insert(i, sil);
+                    i++;
+                }
+                continue;
+            }
+
             this.listView1.Columns.Clear();
             this.listView1.Columns.Add("Notes", 120, HorizontalAlignment.Left);
             this.listView1.Columns.Add("Phoneme", 120, HorizontalAlignment.Left);
             this.listView1.Columns.Add("Onset", 120, HorizontalAlignment.Left);
+            this.listView1.Columns.Add("Duration", 120, HorizontalAlignment.Left);
             this.listView1.BeginUpdate();
             foreach (var item in info.Notes)
             {
@@ -49,6 +82,7 @@ namespace SynthLipN
                     otp += p + " ";
                 i.SubItems.Add(otp);
                 i.SubItems.Add(string.Format("{0}", item.Ons));
+                i.SubItems.Add(string.Format("{0}", item.Dur));
                 this.listView1.Items.Add(i);
                 //System.Diagnostics.Debug.WriteLine(otp);
 
@@ -61,30 +95,92 @@ namespace SynthLipN
 
         private void Button3_Click(object sender, EventArgs e)
         {
-            Sks = JsonSerializer.Deserialize<Skins>(this.textBox1.Text);
-            foreach (var key in Sks.Dics)
+            if (info == null)
+                return;
+            info.metas = new List<MetaPhn>();
+
+            MetaPhn? meta0 = new();
+            meta0.PhnName = "sil|(Init)";
+            meta0.PhnOnset = 0;
+            meta0.PhnSource = Sks.GetSrc("sil");
+            meta0.PhnType = Sks.GetType("sil");
+            meta0.PhnPath = Sks.BasePath + meta0.PhnSource + ".png";
+            info.metas.Insert(0, meta0);
+            meta0 = null;
+            for (int i = 1; i < info.Notes.Count; i++)
             {
-                Sks.Additem(key.Phn, key.Type, key.Src);
+                var item = info.Notes[i];
+                var idx = 0;
+                foreach (var phn in item.Phn)
+                {
+                    idx++;
+                    MetaPhn tmpmeta = new();
+                    tmpmeta.PhnName = string.Format("{0}|{1}", item.Phn[idx - 1], item.Lrc);
+                    tmpmeta.PhnOnset = item.Ons + (idx - 1) * item.Dur / item.Num;
+                    tmpmeta.PhnDuration = -tmpmeta.PhnOnset;
+
+                    // tmpmeta.PhnDuration = item.Dur / item.Num;
+                    tmpmeta.PhnSource = Convert.ToString(Sks.GetSrc(phn)[0]);
+                    if (tmpmeta.PhnType == "continue" || tmpmeta.PhnSource == "-")
+                    {
+                        tmpmeta.PhnSource = info.metas[info.metas.Count - 1].PhnSource;
+                    }
+                    tmpmeta.PhnType = Sks.GetType(phn);
+                    tmpmeta.PhnPath = Sks.BasePath + tmpmeta.PhnSource + ".png";
+
+                    info.metas[info.metas.Count - 1].PhnDuration += tmpmeta.PhnOnset;
+                    var tmpphn = info.metas[info.metas.Count - 1].PhnName.Split("|")[0];
+                    if (Sks.GetType(tmpphn) != "vowel" && Sks.GetType(tmpphn) != "diphthong" && Sks.GetType(tmpphn) != "silence" && Sks.GetType(tmpphn) != "continue")
+                    {
+                        info.metas[info.metas.Count - 1].PhnDuration /= 2;
+                        tmpmeta.PhnOnset = info.metas[info.metas.Count - 1].PhnOnset + info.metas[info.metas.Count - 1].PhnDuration;
+                        tmpmeta.PhnDuration += info.metas[info.metas.Count - 1].PhnDuration;
+                    }
+                    info.metas.Add(tmpmeta);
+                }
             }
+
+            info.metas[info.metas.Count - 1].PhnDuration = 1;
+
+            /*foreach (var item in info.metas)
+            {
+                if (item.PhnSource.Length == 1)
+                    continue ;
+                var idx = item.PhnSource.Length;
+                List<MetaPhn> tmpcol = new List<MetaPhn>();
+                item.PhnDuration /= idx;
+                tmpcol.Add(item);
+                foreach (char ch in item.PhnSource)
+                {
+                    MetaPhn tmpmeta = new();
+                    tmpmeta = item;
+                    tmpmeta.PhnDuration /= idx;
+                    tmpmeta.PhnSource = Convert.ToString(ch);
+                    tmpmeta.PhnPath = Sks.BasePath + tmpmeta.PhnSource + ".png";
+                    tmpmeta.PhnOnset = tmpcol[tmpcol.Count - 2].PhnOnset + tmpcol[tmpcol.Count - 2].PhnDuration;
+                    tmpcol.Add(tmpmeta);
+                }
+            }*/
+
+
             this.listView2.Clear();
             this.listView2.Columns.Add("Phoneme", 120, HorizontalAlignment.Left);
             this.listView2.Columns.Add("Onset", 120, HorizontalAlignment.Left);
+            this.listView2.Columns.Add("Duration", 120, HorizontalAlignment.Left);
             this.listView2.Columns.Add("Source", 120, HorizontalAlignment.Left);
             this.listView2.Columns.Add("Type", 120, HorizontalAlignment.Left);
+            this.listView2.Columns.Add("Path", 500, HorizontalAlignment.Left);
             this.listView2.BeginUpdate();
-            foreach (var item in info.Notes)
+            foreach (var item in info.metas)
             {
-                var idx = 0;
-                foreach (var phones in item.Phn)
-                {
-                    idx++;
-                    ListViewItem i = new();
-                    i.Text = phones;
-                    i.SubItems.Add(Convert.ToString(item.Ons + idx * item.Dur / item.Num));
-                    i.SubItems.Add(Sks.GetSrc(phones));
-                    i.SubItems.Add(Sks.GetType(phones));
-                    this.listView2.Items.Add(i);
-                }
+                ListViewItem i = new();
+                i.Text = item.PhnName;
+                i.SubItems.Add(Convert.ToString(/*item.PhnOnset*/Math.Round(item.PhnOnset * 1, 2, MidpointRounding.AwayFromZero)));
+                i.SubItems.Add(Convert.ToString(/*item.PhnDuration*/Math.Round(item.PhnDuration * 1, 2, MidpointRounding.AwayFromZero)));
+                i.SubItems.Add(item.PhnSource);
+                i.SubItems.Add(item.PhnType);
+                i.SubItems.Add(item.PhnPath);
+                this.listView2.Items.Add(i);
             }
             this.listView2.EndUpdate();
         }
@@ -135,29 +231,49 @@ namespace SynthLipN
 
         private void button4_Click(object sender, EventArgs e)
         {
-            /*var ret = this.saveFileDialog1 = new();
+            var ret = this.saveFileDialog1 = new();
             ret.CheckPathExists = true;
             ret.Filter = "FCP5 XM (.xml)|.xml";
             ret.FileName = info.TrackName;
             ret.Title = "保存时间线/序列";
             var result = this.saveFileDialog1.ShowDialog();
-            if(result == DialogResult.OK)
-            {
-                var filepath = ret.FileName.ToString();
-                System.IO.FileStream fs = (System.IO.FileStream)ret.OpenFile();
-                //fs.wr;
-                fs.Close();
-            }*/
-
-            foreach (var item in this.listView2.Items)
-            {
-
-            }    
 
             Output otp = new();
 
             //MessageBox.Show(otp.OutputFile("test",info));
             this.textBox2.Text = otp.OutputFile("test", info, Sks);
+
+            if (result == DialogResult.OK)
+            {
+                File.WriteAllText(saveFileDialog1.FileName, this.textBox2.Text);
+            }
+
+            /*foreach (var item in this.listView2.Items)
+            {
+
+            }*/
+
+
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            var ofd = this.openFileDialog1 = new();
+            ofd.InitialDirectory = System.Environment.CurrentDirectory + "\\Skin";
+            var result = ofd.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                this.textBox1.Text = File.ReadAllText(ofd.FileName);
+
+                Sks = JsonSerializer.Deserialize<Skins>(this.textBox1.Text);
+
+                Sks.BasePath = Path.GetDirectoryName(ofd.FileName) + "\\";
+
+                foreach (var key in Sks.Dics)
+                {
+                    Sks.Additem(key.Phn, key.Type, key.Src);
+                }
+            }
 
         }
     }

@@ -10,7 +10,7 @@ namespace SynthLipN
 {
     public class Output
     {
-        public string OutputFile(string Title, PrjInfo info, Skins sks)
+        internal string OutputFile(string Title, PrjInfo info, Skins sks)
         {
             /* The classs2xml-output mode have been abandoned */
 
@@ -125,65 +125,72 @@ namespace SynthLipN
             XElement ele =  XElement.Load(ms);
             
             
-
-            string id = "Subtitle_IMG_0001", ftype = ".png", path = "C:/Users/NYTV/Documents/";
-            int timebase = 25, start = 0, dur = 48;
-            #region addelement
-            ele.Element("sequence")
-                .Element("media")
-                .Element("video")
-                .Elements("track").ElementAt(1)
-                .AddFirst(new XElement("clipitem", new XAttribute("id", id + ftype),
-                    new XElement("name", id + ftype),
-                    new XElement("duration", dur),    //一个整数，以帧数为单位指定持续时间。
-                    new XElement("rate",    //对时间刻度进行编码，以解释剪辑、序列、时间码或其他组件的时间值。
-                        new XElement("ntsc", "FALSE"),  //指定 NTSC 速率降低的布尔值。
-                        new XElement("timebase", timebase)),    //一个整数，指定帧速率的时间基。
-                    new XElement("in", 1500 + start),   //一个整数，指定开始时间。
-                    new XElement("out", 1500 + start + dur - 1),  //指定结束时间的整数。
-                    new XElement("start", start),   //一个整数，指定轨道中剪辑的相对起点。
-                    new XElement("end", start + dur - 1),    //一个整数，指定轨道中剪辑的相对终点。
-                    /*
-                     * 注意：在 Final Cut Pro 中，elements的 out 与 end 和 in / start 的计时值的计算方式不同。
-                     * 要计算或解释 start 和 in 的值，Final Cut 会将第一帧编号为帧 0。另一方面，要计算或解释 out 和 end 的值，Final Cut 会将第一帧编号为第 1 帧。换句话说，Final Cut 在计算或解释这些元素的值时使用两种不同的序号编号方案。
-                     */
-                    new XElement("pixelaspectratio", "Square"),
-                    new XElement("stillframe", "TRUE"),
-                    new XElement("anamorphic", "FALSE"),
-                    new XElement("alphatype", "straight"),
-                    new XElement("masterclipid", id + ".png1"),
-                    new XElement("file", new XAttribute("id", id),
+            foreach(var item in info.metas)
+            {
+                string id = item.PhnSource.Replace("\\", "/"), ftype = ".png", path = sks.BasePath.Replace("\\", "/");
+                int timebase = 25;
+                float start = (float)Math.Round(item.PhnOnset * timebase, 2, MidpointRounding.AwayFromZero), 
+                    dur = (float)Math.Round(item.PhnDuration * timebase, 2, MidpointRounding.AwayFromZero);
+                string uniid = id + ftype + info.metas.IndexOf(item);
+                if (dur <= 0.1)
+                    continue;
+                #region addelement
+                ele.Element("sequence")
+                    .Element("media")
+                    .Element("video")
+                    .Elements("track").ElementAt(1)
+                    .AddFirst(new XElement("clipitem", new XAttribute("id", uniid),
                         new XElement("name", id + ftype),
-                        new XElement("pathurl", path + id + ftype),
-                        new XElement("rate",
-                            new XElement("ntsc", "FALSE"),
-                            new XElement("timebase", timebase)
+                        new XElement("duration", dur),    //一个整数，以帧数为单位指定持续时间。
+                        new XElement("rate",    //对时间刻度进行编码，以解释剪辑、序列、时间码或其他组件的时间值。
+                            new XElement("ntsc", "FALSE"),  //指定 NTSC 速率降低的布尔值。
+                            new XElement("timebase", timebase)),    //一个整数，指定帧速率的时间基。
+                        new XElement("in", 90000 + start),   //一个整数，指定开始时间。
+                        new XElement("out", 90000 + start + dur),  //指定结束时间的整数。
+                        new XElement("start", start),   //一个整数，指定轨道中剪辑的相对起点。
+                        new XElement("end", start + dur),    //一个整数，指定轨道中剪辑的相对终点。
+                        /*
+                         * 注意：在 Final Cut Pro 中，elements的 out 与 end 和 in / start 的计时值的计算方式不同。
+                         * 要计算或解释 start 和 in 的值，Final Cut 会将第一帧编号为帧 0。另一方面，要计算或解释 out 和 end 的值，Final Cut 会将第一帧编号为第 1 帧。换句话说，Final Cut 在计算或解释这些元素的值时使用两种不同的序号编号方案。
+                         */
+                        new XElement("pixelaspectratio", "Square"),
+                        new XElement("stillframe", "TRUE"),
+                        new XElement("anamorphic", "FALSE"),
+                        new XElement("alphatype", "straight"),
+                        new XElement("masterclipid", uniid),
+                        new XElement("file", new XAttribute("id", id),
+                            new XElement("name", id + ftype),
+                            new XElement("pathurl", path + id + ftype),
+                            new XElement("rate",
+                                new XElement("ntsc", "FALSE"),
+                                new XElement("timebase", timebase)
+                                ),
+                            new XElement("duration", 2),
+                            new XElement("width", 1920),
+                            new XElement("height", 1080),
+                            new XElement("media",
+                                new XElement("video",
+                                    new XElement("duration", 2),
+                                    new XElement("stillframe", "TRUE"),
+                                    new XElement("samplecharacteristics",
+                                        new XElement("rate",
+                                            new XElement("ntsc", "FALSE"),
+                                            new XElement("timebase", timebase)),
+                                        new XElement("width", 1920),
+                                        new XElement("height", 1080),
+                                        new XElement("pixelaspectratio", "Square"),
+                                        new XElement("anamorphic", "FALSE")
+                                        )
+                                   )
+                                )
                             ),
-                        new XElement("duration", 2),
-                        new XElement("width", 1920),
-                        new XElement("height", 1080),
-                        new XElement("media",
-                            new XElement("video",
-                                new XElement("duration", 2),
-                                new XElement("stillframe", "TRUE"),
-                                new XElement("samplecharacteristics",
-                                    new XElement("rate",
-                                        new XElement("ntsc", "FALSE"),
-                                        new XElement("timebase", timebase)),
-                                    new XElement("width", 1920),
-                                    new XElement("height", 1080),
-                                    new XElement("pixelaspectratio", "Square"),
-                                    new XElement("anamorphic", "FALSE")
-                                    )
-                               )
-                            )
-                        ),
-                    new XElement("sourcetrack",
-                        new XElement("mediatype", "video")
-                        ),
-                    new XElement("fielddominance", "none")
-                    ));
-            #endregion
+                        new XElement("sourcetrack",
+                            new XElement("mediatype", "video")
+                            ),
+                        new XElement("fielddominance", "none")
+                        ));
+                #endregion
+            }
             
             return "<?xml version=\"1.0\" encoding=\"UTF - 8\"?>\n"
                     + "<!DOCTYPE xmeml>\n\n"

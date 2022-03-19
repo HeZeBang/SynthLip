@@ -38,14 +38,16 @@
             this.button4 = new System.Windows.Forms.Button();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.textBox2 = new System.Windows.Forms.TextBox();
+            this.button5 = new System.Windows.Forms.Button();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.SuspendLayout();
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(9, 10);
-            this.button1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.button1.Location = new System.Drawing.Point(12, 12);
+            this.button1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(73, 25);
+            this.button1.Size = new System.Drawing.Size(94, 29);
             this.button1.TabIndex = 0;
             this.button1.Text = "button1";
             this.button1.UseVisualStyleBackColor = true;
@@ -53,10 +55,10 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(87, 10);
-            this.button2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.button2.Location = new System.Drawing.Point(112, 12);
+            this.button2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(73, 25);
+            this.button2.Size = new System.Drawing.Size(94, 29);
             this.button2.TabIndex = 1;
             this.button2.Text = "button2";
             this.button2.UseVisualStyleBackColor = true;
@@ -64,10 +66,10 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(165, 10);
-            this.button3.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.button3.Location = new System.Drawing.Point(212, 12);
+            this.button3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(73, 25);
+            this.button3.Size = new System.Drawing.Size(94, 29);
             this.button3.TabIndex = 2;
             this.button3.Text = "button3";
             this.button3.UseVisualStyleBackColor = true;
@@ -75,62 +77,84 @@
             // 
             // listView1
             // 
-            this.listView1.Location = new System.Drawing.Point(9, 40);
-            this.listView1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.listView1.Location = new System.Drawing.Point(12, 47);
+            this.listView1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(230, 333);
+            this.listView1.Size = new System.Drawing.Size(295, 391);
             this.listView1.TabIndex = 3;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
             // 
             // listView2
             // 
-            this.listView2.Location = new System.Drawing.Point(243, 40);
-            this.listView2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.listView2.Location = new System.Drawing.Point(312, 47);
+            this.listView2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.listView2.Name = "listView2";
-            this.listView2.Size = new System.Drawing.Size(230, 333);
+            this.listView2.Size = new System.Drawing.Size(295, 391);
             this.listView2.TabIndex = 3;
             this.listView2.UseCompatibleStateImageBehavior = false;
             this.listView2.View = System.Windows.Forms.View.Details;
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(476, 40);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.textBox1.Location = new System.Drawing.Point(612, 47);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
             this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBox1.Size = new System.Drawing.Size(262, 333);
+            this.textBox1.Size = new System.Drawing.Size(336, 391);
             this.textBox1.TabIndex = 4;
             this.textBox1.Text = resources.GetString("textBox1.Text");
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(243, 10);
-            this.button4.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.button4.Location = new System.Drawing.Point(312, 12);
+            this.button4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(73, 25);
+            this.button4.Size = new System.Drawing.Size(94, 29);
             this.button4.TabIndex = 5;
             this.button4.Text = "button4";
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
+            // saveFileDialog1
+            // 
+            this.saveFileDialog1.Title = "\"保存时间线/序列\"";
+            // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(742, 37);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.textBox2.Location = new System.Drawing.Point(954, 44);
+            this.textBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textBox2.Multiline = true;
             this.textBox2.Name = "textBox2";
             this.textBox2.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBox2.Size = new System.Drawing.Size(237, 333);
+            this.textBox2.Size = new System.Drawing.Size(304, 391);
             this.textBox2.TabIndex = 4;
             this.textBox2.Text = "Output Textbox";
             // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(412, 12);
+            this.button5.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(94, 29);
+            this.button5.TabIndex = 6;
+            this.button5.Text = "button5";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "*.json";
+            this.openFileDialog1.Filter = "Json 配置文件|*.json|所有文件|*.*";
+            this.openFileDialog1.Title = "选择配置文件";
+            // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(990, 382);
+            this.ClientSize = new System.Drawing.Size(1273, 449);
+            this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox1);
@@ -139,7 +163,7 @@
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
-            this.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "Form1";
             this.Text = "Form1";
             this.ResumeLayout(false);
@@ -158,5 +182,7 @@
         private Button button4;
         private SaveFileDialog saveFileDialog1;
         private TextBox textBox2;
+        private Button button5;
+        private OpenFileDialog openFileDialog1;
     }
 }
