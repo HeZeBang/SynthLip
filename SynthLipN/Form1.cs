@@ -4,6 +4,17 @@ namespace SynthLipN
 {
     public partial class Form1 : Form
     {
+        #region 欢迎辞
+        /*
+         * 明知山有虎，偏向虎山行
+         * 感谢dalao光临寒舍！
+         * 这个代码写的狗屁不通，但是它运行起来了！
+         * WinForm将会被遗弃
+         * 希望有大佬能够整个WPF或者跨平台GTK#也行啊哭www（
+         * ——ZAMBAR
+         */
+        #endregion
+
         public Form1()
         {
             InitializeComponent();
@@ -95,94 +106,105 @@ namespace SynthLipN
 
         private void Button3_Click(object sender, EventArgs e)
         {
-            if (info == null)
-                return;
-            info.metas = new List<MetaPhn>();
-
-            MetaPhn? meta0 = new();
-            meta0.PhnName = "sil|(Init)";
-            meta0.PhnOnset = 0;
-            meta0.PhnSource = Sks.GetSrc("sil");
-            meta0.PhnType = Sks.GetType("sil");
-            meta0.PhnPath = Sks.BasePath + meta0.PhnSource + ".png";
-            info.metas.Insert(0, meta0);
-            meta0 = null;
-            for (int i = 1; i < info.Notes.Count; i++)
+            try
             {
-                var item = info.Notes[i];
-                var idx = 0;
-                foreach (var phn in item.Phn)
+                if (info == null)
+                    return;
+                info.metas = new List<MetaPhn>();
+
+                MetaPhn? meta0 = new();
+                meta0.PhnName = "sil|(Init)";
+                meta0.PhnOnset = 0;
+                meta0.PhnSource = Sks.GetSrc("sil");
+                meta0.PhnType = Sks.GetType("sil");
+                meta0.PhnPath = Sks.BasePath + meta0.PhnSource + ".png";
+                info.metas.Insert(0, meta0);
+                meta0 = null;
+                for (int i = 1; i < info.Notes.Count; i++)
                 {
-                    idx++;
-                    MetaPhn tmpmeta = new();
-                    tmpmeta.PhnName = string.Format("{0}|{1}", item.Phn[idx - 1], item.Lrc);
-                    tmpmeta.PhnOnset = item.Ons + (idx - 1) * item.Dur / item.Num;
-                    tmpmeta.PhnDuration = -tmpmeta.PhnOnset;
-
-                    // tmpmeta.PhnDuration = item.Dur / item.Num;
-                    tmpmeta.PhnSource = Convert.ToString(Sks.GetSrc(phn)[0]);
-                    if (tmpmeta.PhnType == "continue" || tmpmeta.PhnSource == "-")
+                    var item = info.Notes[i];
+                    var idx = 0;
+                    foreach (var phn in item.Phn)
                     {
-                        tmpmeta.PhnSource = info.metas[info.metas.Count - 1].PhnSource;
-                    }
-                    tmpmeta.PhnType = Sks.GetType(phn);
-                    tmpmeta.PhnPath = Sks.BasePath + tmpmeta.PhnSource + ".png";
+                        idx++;
+                        MetaPhn tmpmeta = new();
+                        tmpmeta.PhnName = string.Format("{0}|{1}", item.Phn[idx - 1], item.Lrc);
+                        tmpmeta.PhnOnset = item.Ons + (idx - 1) * item.Dur / item.Num;
+                        tmpmeta.PhnDuration = -tmpmeta.PhnOnset;
 
-                    info.metas[info.metas.Count - 1].PhnDuration += tmpmeta.PhnOnset;
-                    var tmpphn = info.metas[info.metas.Count - 1].PhnName.Split("|")[0];
-                    if (Sks.GetType(tmpphn) != "vowel" && Sks.GetType(tmpphn) != "diphthong" && Sks.GetType(tmpphn) != "silence" && Sks.GetType(tmpphn) != "continue")
-                    {
-                        info.metas[info.metas.Count - 1].PhnDuration /= 2;
-                        tmpmeta.PhnOnset = info.metas[info.metas.Count - 1].PhnOnset + info.metas[info.metas.Count - 1].PhnDuration;
-                        tmpmeta.PhnDuration += info.metas[info.metas.Count - 1].PhnDuration;
+                        // tmpmeta.PhnDuration = item.Dur / item.Num;
+                        tmpmeta.PhnSource = Convert.ToString(Sks.GetSrc(phn)[0]);
+                        if (tmpmeta.PhnType == "continue" || tmpmeta.PhnSource == "-")
+                        {
+                            tmpmeta.PhnSource = info.metas[info.metas.Count - 1].PhnSource;
+                        }
+                        tmpmeta.PhnType = Sks.GetType(phn);
+                        tmpmeta.PhnPath = Sks.BasePath + tmpmeta.PhnSource + ".png";
+
+                        info.metas[info.metas.Count - 1].PhnDuration += tmpmeta.PhnOnset;
+                        var tmpphn = info.metas[info.metas.Count - 1].PhnName.Split("|")[0];
+                        if (Sks.GetType(tmpphn) != "vowel" && Sks.GetType(tmpphn) != "diphthong" && Sks.GetType(tmpphn) != "silence" && Sks.GetType(tmpphn) != "continue")
+                        {
+                            info.metas[info.metas.Count - 1].PhnDuration /= 2;
+                            tmpmeta.PhnOnset = info.metas[info.metas.Count - 1].PhnOnset + info.metas[info.metas.Count - 1].PhnDuration;
+                            tmpmeta.PhnDuration += info.metas[info.metas.Count - 1].PhnDuration;
+                        }
+                        info.metas.Add(tmpmeta);
                     }
-                    info.metas.Add(tmpmeta);
+                }
+
+                info.metas[info.metas.Count - 1].PhnDuration = 1;
+
+                /*foreach (var item in info.metas)
+                {
+                    if (item.PhnSource.Length == 1)
+                        continue ;
+                    var idx = item.PhnSource.Length;
+                    List<MetaPhn> tmpcol = new List<MetaPhn>();
+                    item.PhnDuration /= idx;
+                    tmpcol.Add(item);
+                    foreach (char ch in item.PhnSource)
+                    {
+                        MetaPhn tmpmeta = new();
+                        tmpmeta = item;
+                        tmpmeta.PhnDuration /= idx;
+                        tmpmeta.PhnSource = Convert.ToString(ch);
+                        tmpmeta.PhnPath = Sks.BasePath + tmpmeta.PhnSource + ".png";
+                        tmpmeta.PhnOnset = tmpcol[tmpcol.Count - 2].PhnOnset + tmpcol[tmpcol.Count - 2].PhnDuration;
+                        tmpcol.Add(tmpmeta);
+                    }
+                }*/
+
+
+                this.listView2.Clear();
+                this.listView2.Columns.Add("Phoneme", 120, HorizontalAlignment.Left);
+                this.listView2.Columns.Add("Onset", 120, HorizontalAlignment.Left);
+                this.listView2.Columns.Add("Duration", 120, HorizontalAlignment.Left);
+                this.listView2.Columns.Add("Source", 120, HorizontalAlignment.Left);
+                this.listView2.Columns.Add("Type", 120, HorizontalAlignment.Left);
+                this.listView2.Columns.Add("Path", 500, HorizontalAlignment.Left);
+                this.listView2.BeginUpdate();
+                foreach (var item in info.metas)
+                {
+                    ListViewItem i = new();
+                    i.Text = item.PhnName;
+                    i.SubItems.Add(Convert.ToString(/*item.PhnOnset*/Math.Round(item.PhnOnset * 1, 2, MidpointRounding.AwayFromZero)));
+                    i.SubItems.Add(Convert.ToString(/*item.PhnDuration*/Math.Round(item.PhnDuration * 1, 2, MidpointRounding.AwayFromZero)));
+                    i.SubItems.Add(item.PhnSource);
+                    i.SubItems.Add(item.PhnType);
+                    i.SubItems.Add(item.PhnPath);
+                    this.listView2.Items.Add(i);
+                }
+                this.listView2.EndUpdate();
+            }
+            catch (Exception ex)
+            {
+                if (ex != null)
+                {
+                    System.Diagnostics.Debug.WriteLine(ex.Message);
+                    this.statusStrip1.Text = ex.Message;
                 }
             }
-
-            info.metas[info.metas.Count - 1].PhnDuration = 1;
-
-            /*foreach (var item in info.metas)
-            {
-                if (item.PhnSource.Length == 1)
-                    continue ;
-                var idx = item.PhnSource.Length;
-                List<MetaPhn> tmpcol = new List<MetaPhn>();
-                item.PhnDuration /= idx;
-                tmpcol.Add(item);
-                foreach (char ch in item.PhnSource)
-                {
-                    MetaPhn tmpmeta = new();
-                    tmpmeta = item;
-                    tmpmeta.PhnDuration /= idx;
-                    tmpmeta.PhnSource = Convert.ToString(ch);
-                    tmpmeta.PhnPath = Sks.BasePath + tmpmeta.PhnSource + ".png";
-                    tmpmeta.PhnOnset = tmpcol[tmpcol.Count - 2].PhnOnset + tmpcol[tmpcol.Count - 2].PhnDuration;
-                    tmpcol.Add(tmpmeta);
-                }
-            }*/
-
-
-            this.listView2.Clear();
-            this.listView2.Columns.Add("Phoneme", 120, HorizontalAlignment.Left);
-            this.listView2.Columns.Add("Onset", 120, HorizontalAlignment.Left);
-            this.listView2.Columns.Add("Duration", 120, HorizontalAlignment.Left);
-            this.listView2.Columns.Add("Source", 120, HorizontalAlignment.Left);
-            this.listView2.Columns.Add("Type", 120, HorizontalAlignment.Left);
-            this.listView2.Columns.Add("Path", 500, HorizontalAlignment.Left);
-            this.listView2.BeginUpdate();
-            foreach (var item in info.metas)
-            {
-                ListViewItem i = new();
-                i.Text = item.PhnName;
-                i.SubItems.Add(Convert.ToString(/*item.PhnOnset*/Math.Round(item.PhnOnset * 1, 2, MidpointRounding.AwayFromZero)));
-                i.SubItems.Add(Convert.ToString(/*item.PhnDuration*/Math.Round(item.PhnDuration * 1, 2, MidpointRounding.AwayFromZero)));
-                i.SubItems.Add(item.PhnSource);
-                i.SubItems.Add(item.PhnType);
-                i.SubItems.Add(item.PhnPath);
-                this.listView2.Items.Add(i);
-            }
-            this.listView2.EndUpdate();
         }
 
         private void Button2_Click(object sender, EventArgs e)
@@ -224,35 +246,43 @@ namespace SynthLipN
             }
             catch (Exception ex)
             {
-                this.Text = ex.Message;
+                if (ex != null)
+                {
+                    System.Diagnostics.Debug.WriteLine(ex.Message);
+                    this.statusStrip1.Text = ex.Message;
+                }
             }
 
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            var ret = this.saveFileDialog1 = new();
-            ret.CheckPathExists = true;
-            ret.Filter = "FCP5 XM (.xml)|.xml";
-            ret.FileName = info.TrackName;
-            ret.Title = "保存时间线/序列";
-            var result = this.saveFileDialog1.ShowDialog();
-
-            Output otp = new();
-
-            //MessageBox.Show(otp.OutputFile("test",info));
-            this.textBox2.Text = otp.OutputFile("test", info, Sks);
-
-            if (result == DialogResult.OK)
+            try
             {
-                File.WriteAllText(saveFileDialog1.FileName, this.textBox2.Text);
+                var ret = this.saveFileDialog1 = new();
+                ret.CheckPathExists = true;
+                ret.Filter = "FCP5 XM (.xml)|.xml";
+                ret.FileName = info.TrackName;
+                ret.Title = "保存时间线/序列";
+                var result = this.saveFileDialog1.ShowDialog();
+
+                Output otp = new();
+
+                this.textBox2.Text = otp.OutputFile("test", info, Sks);
+
+                if (result == DialogResult.OK)
+                {
+                    File.WriteAllText(saveFileDialog1.FileName, this.textBox2.Text);
+                }
             }
-
-            /*foreach (var item in this.listView2.Items)
+            catch (Exception ex)
             {
-
-            }*/
-
+                if (ex != null)
+                {
+                    System.Diagnostics.Debug.WriteLine(ex.Message);
+                    this.statusStrip1.Text = ex.Message;
+                }
+            }
 
         }
 
@@ -275,6 +305,29 @@ namespace SynthLipN
                 }
             }
 
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            string msg = "作者自述——————————————\n" +
+                "欢迎使用SynthLip\n" +
+                "这个程序不基于任何神经网络，而是基于口型表直接通过音素生成口型（摊手）\n" +
+                "本着既然我调教不好，就帮别人调教好的精神，开发了这一款小工具┑(￣Д ￣)┍\n" +
+                "使用愉快~\n" +
+                "——ZAMBAR\n";
+            msg += "皮肤信息——————————————\n";
+            if (Sks != null)
+                msg += string.Format("皮肤名称：{0}\n作者：{1}\n画师：{2}\n更新信息：{3}\n路径：{4}\n适用语言：{5}\n",
+                    Sks.SkinName, Sks.Author, Sks.Illustrator, Sks.Update, Sks.BasePath, Sks.Lang);
+            else
+                msg += "未加载\n";
+            msg += "工程信息——————————————\n";
+            if (info != null)
+                msg += string.Format("工程名称：{0}\n工程路径：{1}\n生成时间：{2}\n音符数：{3}\n口型轨道：#{4} - {5}\n脚本版本：{6}\n",
+                    info.PrjName, info.PrjPath, info.EditTime, info.NoteCount, info.Track, info.TrackName, info.ScriptVersion);
+            else
+                msg += "未加载\n";
+            MessageBox.Show(msg);
         }
     }
 }
