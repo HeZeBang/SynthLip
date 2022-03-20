@@ -202,7 +202,8 @@ namespace SynthLipN
                 if (ex != null)
                 {
                     System.Diagnostics.Debug.WriteLine(ex.Message);
-                    this.statusStrip1.Text = ex.Message;
+                    this.toolStripStatusLabel1.Text = ex.Message;
+                    
                 }
             }
         }
@@ -249,7 +250,7 @@ namespace SynthLipN
                 if (ex != null)
                 {
                     System.Diagnostics.Debug.WriteLine(ex.Message);
-                    this.statusStrip1.Text = ex.Message;
+                    this.toolStripStatusLabel1.Text = ex.Message;
                 }
             }
 
@@ -261,7 +262,7 @@ namespace SynthLipN
             {
                 var ret = this.saveFileDialog1 = new();
                 ret.CheckPathExists = true;
-                ret.Filter = "FCP5 XM (.xml)|.xml";
+                ret.Filter = "FCP5 XML文件|.xml";
                 ret.FileName = info.TrackName;
                 ret.Title = "保存时间线/序列";
                 var result = this.saveFileDialog1.ShowDialog();
@@ -280,7 +281,7 @@ namespace SynthLipN
                 if (ex != null)
                 {
                     System.Diagnostics.Debug.WriteLine(ex.Message);
-                    this.statusStrip1.Text = ex.Message;
+                    this.toolStripStatusLabel1.Text = ex.Message;
                 }
             }
 
@@ -315,6 +316,9 @@ namespace SynthLipN
                 "本着既然我调教不好，就帮别人调教好的精神，开发了这一款小工具┑(￣Д ￣)┍\n" +
                 "使用愉快~\n" +
                 "——ZAMBAR\n";
+            msg += "主程序信息————————————\n" +
+                String.Format("程序集版本：{0}\n", 
+                    System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString());
             msg += "皮肤信息——————————————\n";
             if (Sks != null)
                 msg += string.Format("皮肤名称：{0}\n作者：{1}\n画师：{2}\n更新信息：{3}\n路径：{4}\n适用语言：{5}\n",
@@ -328,6 +332,13 @@ namespace SynthLipN
             else
                 msg += "未加载\n";
             MessageBox.Show(msg);
+        }
+
+
+
+        private void toolStripDropDownButton1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

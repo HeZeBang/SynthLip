@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Text;
 using System.Xml.Linq;
-using System.Text.Json;
 
 namespace SynthLipN
 {
@@ -20,7 +15,7 @@ namespace SynthLipN
                  + "<!DOCTYPE xmeml>\n"
                  + "\n"
                  + "<xmeml version=\"5\">\n"
-                 + "  <sequence id=\"序列\">\n"
+                 + "  <sequence id=\"SynthLipSequence\">\n"
                  + "    <updatebehavior>add</updatebehavior>\n"
                  + "    <name>序列</name>\n"
                  + "    <duration>125</duration>\n"
@@ -122,14 +117,16 @@ namespace SynthLipN
 
             byte[] vs = Encoding.UTF8.GetBytes(templatestring);
             MemoryStream ms = new MemoryStream(vs);
-            XElement ele =  XElement.Load(ms);
-            
-            
-            foreach(var item in info.metas)
+            XElement ele = XElement.Load(ms);
+
+            ele.Element("sequence").Element("name").Value = info.PrjName.Replace(".svp", "") + "序列(SynthLip)";
+
+
+            foreach (var item in info.metas)
             {
                 string id = item.PhnSource.Replace("\\", "/"), ftype = ".png", path = sks.BasePath.Replace("\\", "/");
                 int timebase = 25;
-                float start = (float)Math.Round(item.PhnOnset * timebase, 2, MidpointRounding.AwayFromZero), 
+                float start = (float)Math.Round(item.PhnOnset * timebase, 2, MidpointRounding.AwayFromZero),
                     dur = (float)Math.Round(item.PhnDuration * timebase, 2, MidpointRounding.AwayFromZero);
                 string uniid = id + ftype + info.metas.IndexOf(item);
                 if (dur <= 0.1)
@@ -191,7 +188,7 @@ namespace SynthLipN
                         ));
                 #endregion
             }
-            
+
             return "<?xml version=\"1.0\" encoding=\"UTF - 8\"?>\n"
                     + "<!DOCTYPE xmeml>\n\n"
                     + ele.ToString();

@@ -1,0 +1,14 @@
+D:\Codes\SynthLip\SynthLipN\bin\Release\net6.0-windows8.0\publish\SynthLipN.exe
+D:\Codes\SynthLip\SynthLipN\bin\Release\net6.0-windows8.0\publish\Skin\template\A.png
+D:\Codes\SynthLip\SynthLipN\bin\Release\net6.0-windows8.0\publish\Skin\template\B.png
+D:\Codes\SynthLip\SynthLipN\bin\Release\net6.0-windows8.0\publish\Skin\template\C.png
+D:\Codes\SynthLip\SynthLipN\bin\Release\net6.0-windows8.0\publish\Skin\template\config.json
+D:\Codes\SynthLip\SynthLipN\bin\Release\net6.0-windows8.0\publish\Skin\template\D.png
+D:\Codes\SynthLip\SynthLipN\bin\Release\net6.0-windows8.0\publish\Skin\template\E.png
+D:\Codes\SynthLip\SynthLipN\bin\Release\net6.0-windows8.0\publish\Skin\template\F.png
+D:\Codes\SynthLip\SynthLipN\bin\Release\net6.0-windows8.0\publish\Skin\template\G.png
+D:\Codes\SynthLip\SynthLipN\bin\Release\net6.0-windows8.0\publish\Skin\template\H.png
+D:\Codes\SynthLip\SynthLipN\bin\Release\net6.0-windows8.0\publish\SynthLipN.dll
+D:\Codes\SynthLip\SynthLipN\bin\Release\net6.0-windows8.0\publish\SynthLipN.deps.json
+D:\Codes\SynthLip\SynthLipN\bin\Release\net6.0-windows8.0\publish\SynthLipN.runtimeconfig.json
+D:\Codes\SynthLip\SynthLipN\bin\Release\net6.0-windows8.0\publish\SynthLipN.pdb
