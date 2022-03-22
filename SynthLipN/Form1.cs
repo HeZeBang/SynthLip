@@ -19,11 +19,12 @@ namespace SynthLipN
         {
             InitializeComponent();
         }
-        PrjInfo? info;
-        Skins? Sks;
+        /*PrjInfo? info;
+        Skins? Sks;*/
+        SLip program = new();
         private void Button1_Click(object sender, EventArgs e)
         {
-            string clip = Clipboard.GetText();
+            /*string clip = Clipboard.GetText();
             if (!clip.Contains("#SYNTHLIP INFO"))
                 return;
             else
@@ -76,7 +77,13 @@ namespace SynthLipN
                     i++;
                 }
                 continue;
-            }
+            }*/
+
+            program = new();
+
+            if (!program.GenInfo(Clipboard.GetText()))
+                return;
+            program.InitializeNotes();
 
             this.listView1.Columns.Clear();
             this.listView1.Columns.Add("Notes", 120, HorizontalAlignment.Left);
@@ -84,7 +91,7 @@ namespace SynthLipN
             this.listView1.Columns.Add("Onset", 120, HorizontalAlignment.Left);
             this.listView1.Columns.Add("Duration", 120, HorizontalAlignment.Left);
             this.listView1.BeginUpdate();
-            foreach (var item in info.Notes)
+            foreach (var item in program.info.Notes)
             {
                 ListViewItem i = new();
                 i.Text = item.Lrc;
@@ -108,6 +115,7 @@ namespace SynthLipN
         {
             try
             {
+                /*
                 if (info == null)
                     return;
                 info.metas = new List<MetaPhn>();
@@ -175,6 +183,7 @@ namespace SynthLipN
                     }
                 }*/
 
+                program.GenPhones();
 
                 this.listView2.Clear();
                 this.listView2.Columns.Add("Phoneme", 120, HorizontalAlignment.Left);
@@ -184,7 +193,7 @@ namespace SynthLipN
                 this.listView2.Columns.Add("Type", 120, HorizontalAlignment.Left);
                 this.listView2.Columns.Add("Path", 500, HorizontalAlignment.Left);
                 this.listView2.BeginUpdate();
-                foreach (var item in info.metas)
+                foreach (var item in program.info.metas)
                 {
                     ListViewItem i = new();
                     i.Text = item.PhnName;
@@ -240,8 +249,8 @@ namespace SynthLipN
                 test = "{" + test + "}";
                 System.Diagnostics.Debug.WriteLine(test);
 
-                Sks = JsonSerializer.Deserialize<Skins>(test);
-                this.Text = Sks.Dics[0].Phn;
+                program.Sks = JsonSerializer.Deserialize<Skins>(test);
+                this.Text = program.Sks.Dics[0].Phn;
 
                 this.textBox1.Text = test;
             }
@@ -263,13 +272,13 @@ namespace SynthLipN
                 var ret = this.saveFileDialog1 = new();
                 ret.CheckPathExists = true;
                 ret.Filter = "FCP5 XML文件|.xml";
-                ret.FileName = info.TrackName;
+                ret.FileName = program.info.TrackName;
                 ret.Title = "保存时间线/序列";
                 var result = this.saveFileDialog1.ShowDialog();
 
                 Output otp = new();
 
-                this.textBox2.Text = otp.OutputFile("test", info, Sks);
+                this.textBox2.Text = otp.OutputFile("test", program.info, program.Sks);
 
                 if (result == DialogResult.OK)
                 {
@@ -294,8 +303,10 @@ namespace SynthLipN
             var result = ofd.ShowDialog();
             if (result == DialogResult.OK)
             {
+                
                 this.textBox1.Text = File.ReadAllText(ofd.FileName);
-
+                program.ReadSkin(this.textBox1.Text, ofd.FileName);
+                /*
                 Sks = JsonSerializer.Deserialize<Skins>(this.textBox1.Text);
 
                 Sks.BasePath = Path.GetDirectoryName(ofd.FileName) + "\\";
@@ -304,6 +315,7 @@ namespace SynthLipN
                 {
                     Sks.Additem(key.Phn, key.Type, key.Src);
                 }
+                */
             }
 
         }
@@ -320,15 +332,15 @@ namespace SynthLipN
                 String.Format("程序集版本：{0}\n", 
                     System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString());
             msg += "皮肤信息——————————————\n";
-            if (Sks != null)
+            if (program.Sks != null)
                 msg += string.Format("皮肤名称：{0}\n作者：{1}\n画师：{2}\n更新信息：{3}\n路径：{4}\n适用语言：{5}\n",
-                    Sks.SkinName, Sks.Author, Sks.Illustrator, Sks.Update, Sks.BasePath, Sks.Lang);
+                    program.Sks.SkinName, program.Sks.Author, program.Sks.Illustrator, program.Sks.Update, program.Sks.BasePath, program.Sks.Lang);
             else
                 msg += "未加载\n";
             msg += "工程信息——————————————\n";
-            if (info != null)
+            if (program.info != null)
                 msg += string.Format("工程名称：{0}\n工程路径：{1}\n生成时间：{2}\n音符数：{3}\n口型轨道：#{4} - {5}\n脚本版本：{6}\n",
-                    info.PrjName, info.PrjPath, info.EditTime, info.NoteCount, info.Track, info.TrackName, info.ScriptVersion);
+                    program.info.PrjName, program.info.PrjPath, program.info.EditTime, program.info.NoteCount, program.info.Track, program.info.TrackName, program.info.ScriptVersion);
             else
                 msg += "未加载\n";
             MessageBox.Show(msg);

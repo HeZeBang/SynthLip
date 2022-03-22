@@ -1,6 +1,6 @@
 ﻿namespace SynthLipN
 {
-    internal class Skins
+    public class Skins
     {
         Dictionary<string, string>? phokey = new();
         Dictionary<string, string>? photype = new();
@@ -32,7 +32,7 @@
         public DicPhone[]? Dics { get; set; }
 
     }
-    internal class DicPhone
+    public class DicPhone
     {
 
         public string? Phn { get; set; }
