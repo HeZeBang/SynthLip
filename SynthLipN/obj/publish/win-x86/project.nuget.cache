@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "/j0JYO6/O6LpiAjPdRV9jsprS6zi+dlZHB6bRldrAA0pSXWQqWJlcpPC6sDAByDNn54v47QYGVIDykieQqbNSA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\NYTV\\source\\repos\\SynthLip\\SynthLipN\\SynthLipN.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\NYTV\\.nuget\\packages\\microsoft.netcore.app.runtime.win-x86\\6.0.0\\microsoft.netcore.app.runtime.win-x86.6.0.0.nupkg.sha512",
+    "C:\\Users\\NYTV\\.nuget\\packages\\microsoft.windowsdesktop.app.runtime.win-x86\\6.0.0\\microsoft.windowsdesktop.app.runtime.win-x86.6.0.0.nupkg.sha512",
+    "C:\\Users\\NYTV\\.nuget\\packages\\microsoft.aspnetcore.app.runtime.win-x86\\6.0.0\\microsoft.aspnetcore.app.runtime.win-x86.6.0.0.nupkg.sha512",
+    "C:\\Users\\NYTV\\.nuget\\packages\\microsoft.netcore.app.crossgen2.win-x64\\6.0.0\\microsoft.netcore.app.crossgen2.win-x64.6.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}
