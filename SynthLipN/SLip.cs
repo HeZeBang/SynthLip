@@ -1,4 +1,5 @@
-﻿using System.Text.Json;
+﻿using System.IO;
+using System.Text.Json;
 
 namespace SynthLipN
 {
@@ -46,7 +47,7 @@ namespace SynthLipN
             info.Notes.Insert(0, init);
             for (int i = 1; i < info.Notes.Count; i++)
             {
-                if (Math.Abs(info.Notes[i].Ons - info.Notes[i - 1].Ons - info.Notes[i - 1].Dur) > 0.25)
+                if (Math.Abs(info.Notes[i].Ons - info.Notes[i - 1].Ons - info.Notes[i - 1].Dur) > 1/25)
                 {
                     Note sil = new();
                     sil.Phn = new List<string>();

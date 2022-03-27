@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "ndCVJwRmk4ceg+GktKXCqp7lw6YadqXh26mXVUIWgzedE/1PGUc7RuQTzYlMH2MHUph6TkmMRP+ZXyxmuYE1Kw==",
+  "success": true,
+  "projectFilePath": "D:\\Codes\\SynthLipWPF\\SynthLipWPF\\SynthLipWPF.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\ZAMBAR\\.nuget\\packages\\modernwpfui\\0.9.4\\modernwpfui.0.9.4.nupkg.sha512",
+    "C:\\Users\\ZAMBAR\\.nuget\\packages\\microsoft.netcore.app.runtime.win-x86\\6.0.2\\microsoft.netcore.app.runtime.win-x86.6.0.2.nupkg.sha512",
+    "C:\\Users\\ZAMBAR\\.nuget\\packages\\microsoft.windowsdesktop.app.runtime.win-x86\\6.0.2\\microsoft.windowsdesktop.app.runtime.win-x86.6.0.2.nupkg.sha512",
+    "C:\\Users\\ZAMBAR\\.nuget\\packages\\microsoft.aspnetcore.app.runtime.win-x86\\6.0.2\\microsoft.aspnetcore.app.runtime.win-x86.6.0.2.nupkg.sha512",
+    "C:\\Users\\ZAMBAR\\.nuget\\packages\\microsoft.netcore.app.crossgen2.win-x64\\6.0.2\\microsoft.netcore.app.crossgen2.win-x64.6.0.2.nupkg.sha512",
+    "C:\\Users\\ZAMBAR\\.nuget\\packages\\microsoft.windows.sdk.net.ref\\10.0.18362.22\\microsoft.windows.sdk.net.ref.10.0.18362.22.nupkg.sha512"
+  ],
+  "logs": []
+}

@@ -19,6 +19,7 @@
     <Company>SynthLip Team</Company>
     <SupportedOSPlatformVersion>8.0</SupportedOSPlatformVersion>
     <Version>$(VersionPrefix)</Version>
+    <UseWPF>True</UseWPF>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

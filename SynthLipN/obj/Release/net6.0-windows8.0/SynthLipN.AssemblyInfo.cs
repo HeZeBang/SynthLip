@@ -13,11 +13,11 @@ using System.Reflection;
 
 [assembly: System.Reflection.AssemblyCompanyAttribute("SynthLip Team")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
-[assembly: System.Reflection.AssemblyFileVersionAttribute("0.1.0.1")]
+[assembly: System.Reflection.AssemblyFileVersionAttribute("0.1.0.2")]
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
 [assembly: System.Reflection.AssemblyProductAttribute("SynthLipWin")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SynthLipN")]
-[assembly: System.Reflection.AssemblyVersionAttribute("0.1.0.1")]
+[assembly: System.Reflection.AssemblyVersionAttribute("0.1.0.2")]
 [assembly: System.Reflection.AssemblyMetadataAttribute("RepositoryUrl", "https://gitee.com/ZAMBAR/SynthLip.git")]
 [assembly: System.Runtime.Versioning.TargetPlatformAttribute("Windows8.0")]
 [assembly: System.Runtime.Versioning.SupportedOSPlatformAttribute("Windows8.0")]

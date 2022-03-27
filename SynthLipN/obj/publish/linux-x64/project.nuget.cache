@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "KMux/FH1yEfVYxFJf/h/Lp2sK7By37XNQhyaTGNOcykyvhy42xBRUzFi7O3VNWPYeUA1cOKSTi+Z4KH62lclEg==",
+  "success": true,
+  "projectFilePath": "D:\\Codes\\SynthLip\\SynthLipN\\SynthLipN.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\ZAMBAR\\.nuget\\packages\\microsoft.netcore.app.runtime.linux-x64\\6.0.2\\microsoft.netcore.app.runtime.linux-x64.6.0.2.nupkg.sha512",
+    "C:\\Users\\ZAMBAR\\.nuget\\packages\\microsoft.aspnetcore.app.runtime.linux-x64\\6.0.2\\microsoft.aspnetcore.app.runtime.linux-x64.6.0.2.nupkg.sha512",
+    "C:\\Users\\ZAMBAR\\.nuget\\packages\\microsoft.netcore.app.host.linux-x64\\6.0.2\\microsoft.netcore.app.host.linux-x64.6.0.2.nupkg.sha512"
+  ],
+  "logs": []
+}

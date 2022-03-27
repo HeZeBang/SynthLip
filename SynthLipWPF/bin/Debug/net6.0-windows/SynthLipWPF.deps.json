@@ -1,0 +1,41 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "SynthLipWPF/1.0.0": {
+        "dependencies": {
+          "FluentWPF": "0.10.2"
+        },
+        "runtime": {
+          "SynthLipWPF.dll": {}
+        }
+      },
+      "FluentWPF/0.10.2": {
+        "runtime": {
+          "lib/netcoreapp3.0/FluentWPF.dll": {
+            "assemblyVersion": "0.10.2.0",
+            "fileVersion": "0.10.2.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "SynthLipWPF/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "FluentWPF/0.10.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-6bDzdj08dRW4Ynm4GycC2E2MlKFlnH9FPJKRlrIC+a3h+V6a6W7bRiMraviqIZd21JiN6+YggRb76qu/0Zdd0w==",
+      "path": "fluentwpf/0.10.2",
+      "hashPath": "fluentwpf.0.10.2.nupkg.sha512"
+    }
+  }
+}

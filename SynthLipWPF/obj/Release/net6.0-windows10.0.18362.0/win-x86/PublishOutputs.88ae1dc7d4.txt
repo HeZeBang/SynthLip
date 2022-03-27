@@ -1,0 +1,16 @@
+D:\Codes\publish\Synthlip\win-x86F\SynthLipWPF.pdb
+D:\Codes\publish\Synthlip\win-x86F\Skin\template\A.png
+D:\Codes\publish\Synthlip\win-x86F\Skin\template\B.png
+D:\Codes\publish\Synthlip\win-x86F\Skin\template\C.png
+D:\Codes\publish\Synthlip\win-x86F\Skin\template\config.json
+D:\Codes\publish\Synthlip\win-x86F\Skin\template\D.png
+D:\Codes\publish\Synthlip\win-x86F\Skin\template\E.png
+D:\Codes\publish\Synthlip\win-x86F\Skin\template\F.png
+D:\Codes\publish\Synthlip\win-x86F\Skin\template\G.png
+D:\Codes\publish\Synthlip\win-x86F\Skin\template\H.png
+D:\Codes\publish\Synthlip\win-x86F\D3DCompiler_47_cor3.dll
+D:\Codes\publish\Synthlip\win-x86F\PenImc_cor3.dll
+D:\Codes\publish\Synthlip\win-x86F\PresentationNative_cor3.dll
+D:\Codes\publish\Synthlip\win-x86F\vcruntime140_cor3.dll
+D:\Codes\publish\Synthlip\win-x86F\wpfgfx_cor3.dll
+D:\Codes\publish\Synthlip\win-x86F\SynthLipWPF.exe

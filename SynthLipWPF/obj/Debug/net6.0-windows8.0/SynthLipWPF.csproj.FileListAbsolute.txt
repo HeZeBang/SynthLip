@@ -1,0 +1,1 @@
+D:\Codes\SynthLipWPF\SynthLipWPF\obj\Debug\net6.0-windows8.0\SynthLipWPF.csproj.AssemblyReference.cache

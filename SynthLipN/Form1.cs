@@ -1,17 +1,18 @@
+using System.IO;
 using System.Text.Json;
 
 namespace SynthLipN
 {
     public partial class Form1 : Form
     {
-        #region »¶Ó­´Ç
+        #region æ¬¢è¿è¾
         /*
-         * Ã÷ÖªÉ½ÓĞ»¢£¬Æ«Ïò»¢É½ĞĞ
-         * ¸ĞĞ»dalao¹âÁÙº®Éá£¡
-         * Õâ¸ö´úÂëĞ´µÄ¹·Æ¨²»Í¨£¬µ«ÊÇËüÔËĞĞÆğÀ´ÁË£¡
-         * WinForm½«»á±»ÒÅÆú
-         * Ï£ÍûÓĞ´óÀĞÄÜ¹»Õû¸öWPF»òÕß¿çÆ½Ì¨GTK#Ò²ĞĞ°¡¿Şwww£¨
-         * ¡ª¡ªZAMBAR
+         * æ˜çŸ¥å±±æœ‰è™ï¼Œåå‘è™å±±è¡Œ
+         * æ„Ÿè°¢dalaoå…‰ä¸´å¯’èˆï¼
+         * è¿™ä¸ªä»£ç å†™çš„ç‹—å±ä¸é€šï¼Œä½†æ˜¯å®ƒè¿è¡Œèµ·æ¥äº†ï¼
+         * WinFormå°†ä¼šè¢«é—å¼ƒ
+         * å¸Œæœ›æœ‰å¤§ä½¬èƒ½å¤Ÿæ•´ä¸ªWPFæˆ–è€…è·¨å¹³å°GTK#ä¹Ÿè¡Œå•Šå“­wwwï¼ˆ
+         * â€”â€”ZAMBAR
          */
         #endregion
 
@@ -271,9 +272,9 @@ namespace SynthLipN
             {
                 var ret = this.saveFileDialog1 = new();
                 ret.CheckPathExists = true;
-                ret.Filter = "FCP5 XMLÎÄ¼ş|.xml";
+                ret.Filter = "FCP5 XMLæ–‡ä»¶|.xml";
                 ret.FileName = program.info.TrackName;
-                ret.Title = "±£´æÊ±¼äÏß/ĞòÁĞ";
+                ret.Title = "ä¿å­˜æ—¶é—´çº¿/åºåˆ—";
                 var result = this.saveFileDialog1.ShowDialog();
 
                 Output otp = new();
@@ -322,27 +323,27 @@ namespace SynthLipN
 
         private void button6_Click(object sender, EventArgs e)
         {
-            string msg = "×÷Õß×ÔÊö¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª\n" +
-                "»¶Ó­Ê¹ÓÃSynthLip\n" +
-                "Õâ¸ö³ÌĞò²»»ùÓÚÈÎºÎÉñ¾­ÍøÂç£¬¶øÊÇ»ùÓÚ¿ÚĞÍ±íÖ±½ÓÍ¨¹ıÒôËØÉú³É¿ÚĞÍ£¨Ì¯ÊÖ£©\n" +
-                "±¾×Å¼ÈÈ»ÎÒµ÷½Ì²»ºÃ£¬¾Í°ï±ğÈËµ÷½ÌºÃµÄ¾«Éñ£¬¿ª·¢ÁËÕâÒ»¿îĞ¡¹¤¾ß©µ(£ş§¥ £ş)©±\n" +
-                "Ê¹ÓÃÓä¿ì~\n" +
-                "¡ª¡ªZAMBAR\n";
-            msg += "Ö÷³ÌĞòĞÅÏ¢¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª\n" +
-                String.Format("³ÌĞò¼¯°æ±¾£º{0}\n", 
+            string msg = "ä½œè€…è‡ªè¿°â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”\n" +
+                "æ¬¢è¿ä½¿ç”¨SynthLip\n" +
+                "è¿™ä¸ªç¨‹åºä¸åŸºäºä»»ä½•ç¥ç»ç½‘ç»œï¼Œè€Œæ˜¯åŸºäºå£å‹è¡¨ç›´æ¥é€šè¿‡éŸ³ç´ ç”Ÿæˆå£å‹ï¼ˆæ‘Šæ‰‹ï¼‰\n" +
+                "æœ¬ç€æ—¢ç„¶æˆ‘è°ƒæ•™ä¸å¥½ï¼Œå°±å¸®åˆ«äººè°ƒæ•™å¥½çš„ç²¾ç¥ï¼Œå¼€å‘äº†è¿™ä¸€æ¬¾å°å·¥å…·â”‘(ï¿£Ğ” ï¿£)â”\n" +
+                "ä½¿ç”¨æ„‰å¿«~\n" +
+                "â€”â€”ZAMBAR\n";
+            msg += "ä¸»ç¨‹åºä¿¡æ¯â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”\n" +
+                String.Format("ç¨‹åºé›†ç‰ˆæœ¬ï¼š{0}\n", 
                     System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString());
-            msg += "Æ¤·ôĞÅÏ¢¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª\n";
+            msg += "çš®è‚¤ä¿¡æ¯â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”\n";
             if (program.Sks != null)
-                msg += string.Format("Æ¤·ôÃû³Æ£º{0}\n×÷Õß£º{1}\n»­Ê¦£º{2}\n¸üĞÂĞÅÏ¢£º{3}\nÂ·¾¶£º{4}\nÊÊÓÃÓïÑÔ£º{5}\n",
+                msg += string.Format("çš®è‚¤åç§°ï¼š{0}\nä½œè€…ï¼š{1}\nç”»å¸ˆï¼š{2}\næ›´æ–°ä¿¡æ¯ï¼š{3}\nè·¯å¾„ï¼š{4}\né€‚ç”¨è¯­è¨€ï¼š{5}\n",
                     program.Sks.SkinName, program.Sks.Author, program.Sks.Illustrator, program.Sks.Update, program.Sks.BasePath, program.Sks.Lang);
             else
-                msg += "Î´¼ÓÔØ\n";
-            msg += "¹¤³ÌĞÅÏ¢¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª\n";
+                msg += "æœªåŠ è½½\n";
+            msg += "å·¥ç¨‹ä¿¡æ¯â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”\n";
             if (program.info != null)
-                msg += string.Format("¹¤³ÌÃû³Æ£º{0}\n¹¤³ÌÂ·¾¶£º{1}\nÉú³ÉÊ±¼ä£º{2}\nÒô·ûÊı£º{3}\n¿ÚĞÍ¹ìµÀ£º#{4} - {5}\n½Å±¾°æ±¾£º{6}\n",
+                msg += string.Format("å·¥ç¨‹åç§°ï¼š{0}\nå·¥ç¨‹è·¯å¾„ï¼š{1}\nç”Ÿæˆæ—¶é—´ï¼š{2}\néŸ³ç¬¦æ•°ï¼š{3}\nå£å‹è½¨é“ï¼š#{4} - {5}\nè„šæœ¬ç‰ˆæœ¬ï¼š{6}\n",
                     program.info.PrjName, program.info.PrjPath, program.info.EditTime, program.info.NoteCount, program.info.Track, program.info.TrackName, program.info.ScriptVersion);
             else
-                msg += "Î´¼ÓÔØ\n";
+                msg += "æœªåŠ è½½\n";
             MessageBox.Show(msg);
         }
 
